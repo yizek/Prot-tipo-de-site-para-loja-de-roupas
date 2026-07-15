@@ -26,38 +26,74 @@ const icons = {
 };
 
 const products = [
-  {cat:'Camiseta', name:'Essentials Oversized', icon:'tshirt', price:189.90, old:null, stock:true, free:true, sizes:['P','M','G','GG']},
-  {cat:'Moletom', name:'State Heavyweight', icon:'hoodie', price:349.90, old:419.90, stock:true, free:true, sizes:['P','M','G','GG']},
-  {cat:'Boné', name:'Aba Reta Classic', icon:'cap', price:129.90, old:null, stock:true, free:false, sizes:['Único']},
-  {cat:'Bermuda', name:'Cargo Tactel', icon:'shorts', price:199.90, old:null, stock:false, free:true, sizes:['P','M','G','GG']},
-  {cat:'Calça', name:'Jogger Ripstop', icon:'pants', price:289.90, old:339.90, stock:true, free:true, sizes:['38','40','42','44']},
-  {cat:'Corta-vento', name:'Windrunner Statewear', icon:'jacket', price:259.90, old:null, stock:true, free:false, sizes:['P','M','G','GG']},
-  {cat:'Óculos', name:'Retangular Metal', icon:'glasses', price:149.90, old:null, stock:false, free:false, sizes:['Único']},
-  {cat:'Corrente', name:'Cubana Prata 60cm', icon:'chain', price:169.90, old:199.90, stock:true, free:true, sizes:['50cm','60cm','70cm']}
+  { brand:'ESSENTIAL FEAR GOD', cat:'Camiseta', name:'Essentials Oversized', icon:'tshirt', price:189.90, old:null, stock:true, free:true, sizes:['P','M','G','GG'] },
+  { brand:'HELLSTAR', cat:'Moletom', name:'Hellstar Tracks Hoodie', icon:'hoodie', price:429.90, old:499.90, stock:true, free:true, sizes:['P','M','G','GG'] },
+  { brand:'HELLSTAR', cat:'Camiseta', name:'Hellstar Classic Tee', icon:'tshirt', price:219.90, old:null, stock:true, free:false, sizes:['P','M','G','GG'] },
+  { brand:'CHROME HEARTS', cat:'Moletom', name:'Chrome Hearts Cross Hoodie', icon:'hoodie', price:899.90, old:null, stock:true, free:true, sizes:['P','M','G','GG'] },
+  { brand:'CHROME HEARTS', cat:'Corrente', name:'Chrome Hearts Cuban Link', icon:'chain', price:649.90, old:749.90, stock:true, free:true, sizes:['50cm','60cm','70cm'] },
+  { brand:'BAPE', cat:'Camiseta', name:'Bape Shark Tee', icon:'tshirt', price:349.90, old:null, stock:true, free:true, sizes:['P','M','G','GG'] },
+  { brand:'BAPE', cat:'Boné', name:'Bape ABC Cap', icon:'cap', price:279.90, old:null, stock:true, free:false, sizes:['Único'] },
+  { brand:'SP5DER', cat:'Moletom', name:'Sp5der Web Hoodie', icon:'hoodie', price:389.90, old:449.90, stock:true, free:true, sizes:['P','M','G','GG'] },
+  { brand:'SP5DER', cat:'Bermuda', name:'Sp5der Logo Shorts', icon:'shorts', price:249.90, old:null, stock:false, free:true, sizes:['P','M','G','GG'] },
+  { brand:'RALPH LAUREN', cat:'Camiseta', name:'Polo Bear Tee', icon:'tshirt', price:299.90, old:null, stock:true, free:true, sizes:['P','M','G','GG'] },
+  { brand:'RALPH LAUREN', cat:'Moletom', name:'Ralph Lauren Crew', icon:'hoodie', price:459.90, old:529.90, stock:true, free:true, sizes:['P','M','G','GG'] },
+  { brand:'NIKE TECH', cat:'Moletom', name:'Nike Tech Fleece Hoodie', icon:'hoodie', price:549.90, old:null, stock:true, free:true, sizes:['P','M','G','GG'] },
+  { brand:'NIKE TECH', cat:'Calça', name:'Nike Tech Fleece Pants', icon:'pants', price:499.90, old:579.90, stock:true, free:true, sizes:['P','M','G','GG'] },
+  { brand:'ESSENTIAL FEAR GOD', cat:'Calça', name:'Essentials Fleece Pants', icon:'pants', price:329.90, old:null, stock:true, free:true, sizes:['P','M','G','GG'] },
+  { brand:'BAPE', cat:'Corta-vento', name:'Bape Windbreaker', icon:'jacket', price:599.90, old:null, stock:true, free:false, sizes:['P','M','G','GG'] },
+  { brand:'CHROME HEARTS', cat:'Óculos', name:'Chrome Hearts Aviator', icon:'glasses', price:799.90, old:null, stock:false, free:false, sizes:['Único'] }
 ];
 
 const money = v => v.toLocaleString('pt-BR', {minimumFractionDigits:2, maximumFractionDigits:2});
 
-function renderProducts(categoryFilter = 'Todos') {
-  const filtered = categoryFilter && categoryFilter !== 'Todos'
-    ? products.filter(p => {
-        const catLower = p.cat.toLowerCase();
-        const filterLower = categoryFilter.toLowerCase();
-        if (filterLower === 'camisetas') return catLower === 'camiseta';
-        if (filterLower === 'moletom / jaqueta') return catLower === 'moletom' || catLower === 'corta-vento';
-        if (filterLower === 'bermudas') return catLower === 'bermuda';
-        if (filterLower === 'calças') return catLower === 'calça';
-        if (filterLower === 'bonés') return catLower === 'boné';
-        if (filterLower === 'óculos') return catLower === 'óculos';
-        if (filterLower === 'correntes') return catLower === 'corrente';
-        return catLower === filterLower;
-      })
-    : products;
+let activeCategory = 'Todos';
+let activeBrand = 'Todas';
 
-  document.getElementById('productGrid').innerHTML = filtered.map((p) => {
-    const originalIndex = products.indexOf(p);
-    const discount = p.old ? Math.round((1 - p.price/p.old)*100) : null;
-    return `
+function matchesCategory(product, categoryFilter) {
+  if (!categoryFilter || categoryFilter === 'Todos') return true;
+
+  const catLower = product.cat.toLowerCase();
+  const filterLower = categoryFilter.toLowerCase();
+
+  if (filterLower === 'camisetas') return catLower === 'camiseta';
+  if (filterLower === 'moletom / jaqueta') return catLower === 'moletom' || catLower === 'corta-vento';
+  if (filterLower === 'bermudas') return catLower === 'bermuda';
+  if (filterLower === 'calças') return catLower === 'calça';
+  if (filterLower === 'bonés') return catLower === 'boné';
+  if (filterLower === 'óculos') return catLower === 'óculos';
+  if (filterLower === 'correntes') return catLower === 'corrente';
+
+  return catLower === filterLower;
+}
+
+function matchesBrand(product, brandFilter) {
+  if (!brandFilter || brandFilter === 'Todas') return true;
+  return product.brand === brandFilter;
+}
+
+function filterProducts(categoryFilter = activeCategory, brandFilter = activeBrand) {
+  return products.filter(p => matchesCategory(p, categoryFilter) && matchesBrand(p, brandFilter));
+}
+
+function formatBrandLabel(brand) {
+  if (brand === 'Todas') return 'Todas as marcas';
+  return brand;
+}
+
+function formatCategoryLabel(category) {
+  if (category === 'Todos') return 'Todos os estilos';
+  return category;
+}
+
+function updateCatalogSubtitle() {
+  const subtitle = document.getElementById('catalogSubtitle');
+  if (!subtitle) return;
+  subtitle.textContent = `${formatBrandLabel(activeBrand)} · ${formatCategoryLabel(activeCategory)}`;
+}
+
+function renderProductCard(p, originalIndex) {
+  const discount = p.old ? Math.round((1 - p.price / p.old) * 100) : null;
+  return `
     <div class="card" data-index="${originalIndex}">
       <div class="card__media">
         ${discount ? `<span class="badge">-${discount}%</span>` : ''}
@@ -67,6 +103,7 @@ function renderProducts(categoryFilter = 'Todos') {
         ${!p.stock ? `<div class="sold-out"><span>Esgotado</span></div>` : ''}
       </div>
       <div class="card__body">
+        <span class="card__brand">${p.brand}</span>
         <span class="card__cat">${p.cat}</span>
         <span class="card__name">${p.name}</span>
         <div class="card__prices">
@@ -78,35 +115,64 @@ function renderProducts(categoryFilter = 'Todos') {
         </button>
       </div>
     </div>`;
-  }).join('');
+}
+
+function renderProducts(categoryFilter = activeCategory, brandFilter = activeBrand) {
+  activeCategory = categoryFilter;
+  activeBrand = brandFilter;
+
+  const filtered = filterProducts(categoryFilter, brandFilter);
+  const grid = document.getElementById('productGrid');
+  const emptyState = document.getElementById('catalogEmpty');
+
+  grid.innerHTML = filtered.map(p => renderProductCard(p, products.indexOf(p))).join('');
+  grid.hidden = filtered.length === 0;
+  if (emptyState) emptyState.hidden = filtered.length > 0;
+
+  updateCatalogSubtitle();
+}
+
+function setActiveFilterPill(container, selector, activeValue, dataAttr) {
+  container.querySelectorAll(selector).forEach(pill => {
+    pill.classList.toggle('active', pill.dataset[dataAttr] === activeValue);
+  });
+}
+
+function resetFilters() {
+  activeCategory = 'Todos';
+  activeBrand = 'Todas';
+  setActiveFilterPill(document.getElementById('catsRow'), '.filter-pill', 'Todos', 'category');
+  setActiveFilterPill(document.getElementById('brandsRow'), '.filter-pill', 'Todas', 'brand');
+  renderProducts('Todos', 'Todas');
 }
 
 // Inicializar vitrine
-renderProducts('Todos');
+renderProducts('Todos', 'Todas');
 
-// ---------- filtro de categorias ----------
-document.querySelector('.cats-row').addEventListener('click', e => {
-  const pill = e.target.closest('.cat-pill');
+// ---------- filtros de marca e estilo ----------
+document.getElementById('catsRow').addEventListener('click', e => {
+  const pill = e.target.closest('.filter-pill');
   if (!pill) return;
-  e.preventDefault();
-  
-  document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
-  pill.classList.add('active');
-  
-  const category = pill.textContent.trim();
-  renderProducts(category);
+
+  activeCategory = pill.dataset.category;
+  setActiveFilterPill(document.getElementById('catsRow'), '.filter-pill', activeCategory, 'category');
+  renderProducts(activeCategory, activeBrand);
   document.querySelector('#produtos').scrollIntoView({ behavior: 'smooth' });
 });
 
-// Link "Ver todos os produtos" no rodapé/seção
-document.querySelector('.see-all').addEventListener('click', e => {
+document.getElementById('brandsRow').addEventListener('click', e => {
+  const pill = e.target.closest('.filter-pill');
+  if (!pill) return;
+
+  activeBrand = pill.dataset.brand;
+  setActiveFilterPill(document.getElementById('brandsRow'), '.filter-pill', activeBrand, 'brand');
+  renderProducts(activeCategory, activeBrand);
+  document.querySelector('#produtos').scrollIntoView({ behavior: 'smooth' });
+});
+
+document.getElementById('clearFiltersBtn').addEventListener('click', e => {
   e.preventDefault();
-  document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
-  const todosPill = document.querySelector('.cat-pill:first-child');
-  if (todosPill && todosPill.textContent.trim() === 'Todos') {
-    todosPill.classList.add('active');
-  }
-  renderProducts('Todos');
+  resetFilters();
   document.querySelector('#produtos').scrollIntoView({ behavior: 'smooth' });
 });
 
@@ -114,33 +180,130 @@ document.querySelector('.see-all').addEventListener('click', e => {
 let cartCount = 0;
 const cartCountEl = document.getElementById('cartCount');
 
-// ---------- estado do painel de produto ----------
+// ---------- estado da página de produto ----------
 const overlay = document.getElementById('overlay');
-const drawer = document.getElementById('drawer');
+const productPage = document.getElementById('productPage');
 const sizeOptionsEl = document.getElementById('sizeOptions');
 const qtyValueEl = document.getElementById('qtyValue');
 const cepInput = document.getElementById('cepInput');
 const freteResultEl = document.getElementById('freteResult');
 const drawerAddBtn = document.getElementById('drawerAddBtn');
 const drawerConfirm = document.getElementById('drawerConfirm');
+const galleryImageEl = document.getElementById('galleryImage');
+const galleryThumbsEl = document.getElementById('galleryThumbs');
+const galleryDiscountEl = document.getElementById('galleryDiscount');
+const galleryFreeEl = document.getElementById('galleryFree');
+const gallerySoldOutEl = document.getElementById('gallerySoldOut');
+const installmentsEl = document.getElementById('installments');
+const productDescriptionEl = document.getElementById('productDescription');
+const similarGridEl = document.getElementById('similarGrid');
+const breadcrumbCatEl = document.getElementById('breadcrumbCat');
 
 let currentProduct = null;
+let currentIndex = null;
 let selectedSize = null;
 let qty = 1;
 let freteCalculado = null;
 
+// descrições genéricas por tipo de peça (reaproveitadas entre produtos do mesmo tipo)
+const descriptions = {
+  tshirt: 'Camiseta em malha 100% algodão, corte oversized e caimento reto. Peça-base pra montar qualquer fit streetwear, do casual ao mais montado.',
+  hoodie: 'Moletom em algodão peruado, forro felpudo por dentro pra maior conforto. Corte oversized, ideal pra usar sozinho ou em camadas.',
+  cap: 'Boné em sarja resistente, aba reta e ajuste traseiro. Acessório clássico do streetwear, combina com qualquer produção.',
+  shorts: 'Bermuda em tactel leve, cós com elástico e cordão de ajuste. Boa pra dias quentes sem perder a estética de rua.',
+  pants: 'Calça em ripstop resistente, corte jogger com punho no tornozelo. Conforto de moletom com cara de calça de grife.',
+  jacket: 'Corta-vento em nylon impermeável, forro leve e capuz ajustável. Proteção contra vento e chuva fraca sem abrir mão do estilo.',
+  glasses: 'Óculos com armação retangular em metal e lentes com proteção UV. Acessório que fecha qualquer produção streetwear.',
+  chain: 'Corrente banhada, elo grosso e fecho reforçado. Acessório statement pra dar aquele toque a mais no visual.'
+};
+
+function updateBreadcrumb(cat){
+  breadcrumbCatEl.textContent = cat;
+}
+
+function renderInstallments(price){
+  const parcela = price / 12;
+  installmentsEl.textContent = `ou 12x de R$ ${money(parcela)} sem juros`;
+}
+
+function renderGallery(p){
+  galleryImageEl.innerHTML = icons[p.icon + '_front'];
+  galleryThumbsEl.innerHTML = `
+    <div class="gallery-thumb active" data-angle="front">${icons[p.icon + '_front']}</div>
+    <div class="gallery-thumb" data-angle="back">${icons[p.icon + '_back']}</div>
+  `;
+
+  const discount = p.old ? Math.round((1 - p.price / p.old) * 100) : null;
+  if (discount) {
+    galleryDiscountEl.textContent = `-${discount}%`;
+    galleryDiscountEl.style.display = 'block';
+  } else {
+    galleryDiscountEl.style.display = 'none';
+  }
+  galleryFreeEl.style.display = p.free ? 'block' : 'none';
+  gallerySoldOutEl.style.display = p.stock ? 'none' : 'flex';
+}
+
+galleryThumbsEl && galleryThumbsEl.addEventListener('click', e => {
+  const thumb = e.target.closest('.gallery-thumb');
+  if (!thumb || !currentProduct) return;
+  galleryThumbsEl.querySelectorAll('.gallery-thumb').forEach(t => t.classList.toggle('active', t === thumb));
+  galleryImageEl.innerHTML = icons[currentProduct.icon + '_' + thumb.dataset.angle];
+});
+
+function renderSimilar(p, index){
+  let similares = products
+    .map((prod, i) => ({ prod, i }))
+    .filter(item => item.prod.brand === p.brand && item.i !== index)
+    .slice(0, 4);
+
+  if (similares.length === 0) {
+    similares = products
+      .map((prod, i) => ({ prod, i }))
+      .filter(item => item.prod.cat === p.cat && item.i !== index)
+      .slice(0, 4);
+  }
+
+  // fallback: catálogo ainda pequeno, sem outra peça da mesma categoria — mostra outras peças
+  if (similares.length === 0) {
+    similares = products
+      .map((prod, i) => ({ prod, i }))
+      .filter(item => item.i !== index)
+      .slice(0, 4);
+  }
+
+  if (similares.length === 0) {
+    similarGridEl.innerHTML = `<p style="color:var(--gray);font-size:13.5px;">Nenhuma outra peça no catálogo no momento.</p>`;
+    return;
+  }
+
+  similarGridEl.innerHTML = similares.map(({ prod, i }) => renderProductCard(prod, i)).join('');
+}
+
+similarGridEl && similarGridEl.addEventListener('click', e => {
+  const trigger = e.target.closest('[data-index]');
+  if (!trigger) return;
+  openDrawer(Number(trigger.dataset.index));
+});
+
 function openDrawer(index){
   const p = products[index];
   currentProduct = p;
+  currentIndex = index;
   selectedSize = null;
   qty = 1;
   freteCalculado = null;
 
-  document.getElementById('drawerMedia').innerHTML = icons[p.icon + '_front'];
+  updateBreadcrumb(p.cat);
+  renderGallery(p);
+  document.getElementById('drawerBrand').textContent = p.brand;
   document.getElementById('drawerCat').textContent = p.cat;
   document.getElementById('drawerName').textContent = p.name;
   document.getElementById('drawerOld').textContent = p.old ? `R$ ${money(p.old)}` : '';
   document.getElementById('drawerPrice').textContent = `R$ ${money(p.price)}`;
+  renderInstallments(p.price);
+  productDescriptionEl.textContent = descriptions[p.icon] || '';
+  renderSimilar(p, index);
 
   sizeOptionsEl.innerHTML = p.sizes.map(s => `<button type="button" class="size-opt" data-size="${s}">${s}</button>`).join('');
   qtyValueEl.textContent = qty;
@@ -151,13 +314,14 @@ function openDrawer(index){
 
   closeCartDrawer();
   closeSuggestionDrawer();
-  overlay.classList.add('open');
-  drawer.classList.add('open');
+  productPage.classList.add('open');
+  productPage.querySelector('.product-page__scroll').scrollTop = 0;
+  document.body.style.overflow = 'hidden';
 }
 
 function closeDrawer(){
-  overlay.classList.remove('open');
-  drawer.classList.remove('open');
+  productPage.classList.remove('open');
+  document.body.style.overflow = '';
 }
 
 function updateAddButton(){
@@ -182,9 +346,8 @@ document.getElementById('productGrid').addEventListener('click', e => {
   openDrawer(Number(trigger.dataset.index));
 });
 
-document.getElementById('drawerClose').addEventListener('click', closeDrawer);
+document.getElementById('productBackBtn').addEventListener('click', closeDrawer);
 overlay.addEventListener('click', () => {
-  closeDrawer();
   closeCartDrawer();
   closeSuggestionDrawer();
 });
@@ -294,20 +457,29 @@ drawerAddBtn.addEventListener('click', () => {
   setTimeout(() => { closeDrawer(); }, 900);
 });
 
-// ---------- menu mobile (burger menu toggling) ----------
+// ---------- menu mobile (abre/fecha o dropdown de navegação) ----------
 const burgerBtn = document.getElementById('burgerBtn');
-const navlinks = document.querySelector('.navlinks');
+const navlinksEl = document.querySelector('.navlinks');
+
+function closeMobileMenu(){
+  navlinksEl.classList.remove('open');
+  burgerBtn.classList.remove('open');
+}
 
 burgerBtn.addEventListener('click', () => {
-  navlinks.classList.toggle('open');
-  burgerBtn.classList.toggle('active');
+  navlinksEl.classList.toggle('open');
+  burgerBtn.classList.toggle('open');
 });
 
-// Fechar menu mobile ao clicar em algum link interno
-navlinks.addEventListener('click', e => {
-  if (e.target.tagName === 'A') {
-    navlinks.classList.remove('open');
-    burgerBtn.classList.remove('active');
+// fecha o menu ao clicar em qualquer link dele
+navlinksEl.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', closeMobileMenu);
+});
+
+// fecha o menu ao clicar fora dele
+document.addEventListener('click', e => {
+  if (!navlinksEl.contains(e.target) && e.target !== burgerBtn && !burgerBtn.contains(e.target)) {
+    closeMobileMenu();
   }
 });
 
@@ -412,7 +584,7 @@ function renderCart() {
           <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
             <div>
               <h4 class="cart-item__name" style="margin:0; font-size:13px; line-height:1.2;">${item.product.name}</h4>
-              <span class="cart-item__meta">Tam: ${item.size} · ${item.product.cat}</span>
+              <span class="cart-item__meta">${item.product.brand} · Tam: ${item.size} · ${item.product.cat}</span>
             </div>
             <button class="cart-item__remove" onclick="removeFromCart(${idx})">Remover</button>
           </div>
@@ -553,7 +725,7 @@ checkoutBtn.addEventListener('click', () => {
 
   cart.forEach(item => {
     const itemTotal = item.product.price * item.qty;
-    message += `• ${item.qty}x ${item.product.name} (Tamanho: ${item.size}) - R$ ${money(itemTotal)}\n`;
+    message += `• ${item.qty}x ${item.product.name} (${item.product.brand} · Tam: ${item.size}) - R$ ${money(itemTotal)}\n`;
   });
 
   const freteLabel = cartFrete.tipo === 'sedex' ? 'SEDEX' : 'PAC';
@@ -566,7 +738,7 @@ checkoutBtn.addEventListener('click', () => {
   message += `Gostaria de combinar os detalhes da entrega e pagamento!`;
 
   const encodedText = encodeURIComponent(message);
-  const waUrl = `https://wa.me/5511972311664?text=${encodedText}`;
+  const waUrl = `https://wa.me/5511999999999?text=${encodedText}`;
 
   window.open(waUrl, '_blank');
 });
@@ -721,7 +893,7 @@ suggestionSendBtn.addEventListener('click', () => {
   }
 
   const encodedText = encodeURIComponent(message);
-  const waUrl = `https://wa.me/5511972311664?text=${encodedText}`;
+  const waUrl = `https://wa.me/5511999999999?text=${encodedText}`;
   window.open(waUrl, '_blank');
 
   suggestionConfirm.classList.add('show');

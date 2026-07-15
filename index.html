@@ -44,26 +44,46 @@
   </div>
 </section>
 
-<div class="cats-bar">
-  <div class="cats-row">
-    <a href="#produtos" class="cat-pill active">Todos</a>
-    <a href="#produtos" class="cat-pill">Camisetas</a>
-    <a href="#produtos" class="cat-pill">Moletom / Jaqueta</a>
-    <a href="#produtos" class="cat-pill">Bermudas</a>
-    <a href="#produtos" class="cat-pill">Calças</a>
-    <a href="#produtos" class="cat-pill">Bonés</a>
-    <a href="#produtos" class="cat-pill">Óculos</a>
-    <a href="#produtos" class="cat-pill">Correntes</a>
+<div class="filters-bar">
+  <div class="filter-group">
+    <span class="filter-label">Marca</span>
+    <div class="filter-row brands-row" id="brandsRow">
+      <button type="button" class="filter-pill active" data-brand="Todas">Todas</button>
+      <button type="button" class="filter-pill" data-brand="HELLSTAR">Hellstar</button>
+      <button type="button" class="filter-pill" data-brand="CHROME HEARTS">Chrome Hearts</button>
+      <button type="button" class="filter-pill" data-brand="ESSENTIAL FEAR GOD">Essential Fear God</button>
+      <button type="button" class="filter-pill" data-brand="BAPE">Bape</button>
+      <button type="button" class="filter-pill" data-brand="SP5DER">Sp5der</button>
+      <button type="button" class="filter-pill" data-brand="RALPH LAUREN">Ralph Lauren</button>
+      <button type="button" class="filter-pill" data-brand="NIKE TECH">Nike Tech</button>
+    </div>
+  </div>
+  <div class="filter-group">
+    <span class="filter-label">Estilo</span>
+    <div class="filter-row cats-row" id="catsRow">
+      <button type="button" class="filter-pill active" data-category="Todos">Todos</button>
+      <button type="button" class="filter-pill" data-category="Camisetas">Camisetas</button>
+      <button type="button" class="filter-pill" data-category="Moletom / Jaqueta">Moletom / Jaqueta</button>
+      <button type="button" class="filter-pill" data-category="Bermudas">Bermudas</button>
+      <button type="button" class="filter-pill" data-category="Calças">Calças</button>
+      <button type="button" class="filter-pill" data-category="Bonés">Bonés</button>
+      <button type="button" class="filter-pill" data-category="Óculos">Óculos</button>
+      <button type="button" class="filter-pill" data-category="Correntes">Correntes</button>
+    </div>
   </div>
 </div>
 
 <section id="produtos">
   <div class="wrap">
     <div class="section-head">
-      <h2>Destaques</h2>
-      <a href="#" class="see-all">Ver todos os produtos</a>
+      <div>
+        <h2 id="catalogTitle">Catálogo</h2>
+        <p class="catalog-subtitle" id="catalogSubtitle">Todas as marcas · Todos os estilos</p>
+      </div>
+      <a href="#" class="see-all" id="clearFiltersBtn">Limpar filtros</a>
     </div>
     <div class="grid" id="productGrid"></div>
+    <p class="catalog-empty" id="catalogEmpty" hidden>Nenhuma peça encontrada com esses filtros. Tente outra marca ou estilo.</p>
   </div>
 </section>
 
@@ -95,50 +115,89 @@
 </footer>
 
 <div class="overlay" id="overlay"></div>
-<aside class="drawer" id="drawer">
-  <button class="drawer-close" id="drawerClose" aria-label="Fechar">×</button>
-  <div class="drawer-media" id="drawerMedia"></div>
-  <div class="drawer-body">
-    <div>
-      <span class="drawer-cat" id="drawerCat"></span>
-      <h3 class="drawer-name" id="drawerName"></h3>
-      <div class="drawer-prices" style="margin-top:8px;">
-        <span class="price-old" id="drawerOld"></span>
-        <span class="price-new" id="drawerPrice"></span>
-      </div>
-    </div>
 
-    <div>
-      <span class="field-label">Tamanho</span>
-      <div class="size-options" id="sizeOptions"></div>
-    </div>
-
-    <div>
-      <span class="field-label">Quantidade</span>
-      <div class="qty-control">
-        <button id="qtyMinus" type="button">−</button>
-        <span id="qtyValue">1</span>
-        <button id="qtyPlus" type="button">+</button>
-      </div>
-    </div>
-
-    <div>
-      <span class="field-label">Calcular frete</span>
-      <div class="cep-row">
-        <input id="cepInput" type="text" inputmode="numeric" placeholder="00000-000" maxlength="9">
-        <button id="calcFreteBtn" type="button">Calcular</button>
-      </div>
-      <div class="cep-hint">Não sabe o CEP? <a href="http://www.buscacep.correios.com.br/sistemas/buscacep/" target="_blank">Consultar nos Correios</a></div>
-      <div id="freteResult"></div>
-    </div>
-
-    <button class="drawer-add" id="drawerAddBtn" disabled>Selecione um tamanho</button>
-    <span class="drawer-confirm" id="drawerConfirm">Adicionado ao carrinho ✓</span>
+<div class="product-page" id="productPage">
+  <div class="product-page__topbar">
+    <button class="back-btn" id="productBackBtn" aria-label="Voltar">← Voltar</button>
+    <div class="breadcrumb"><a href="#produtos" id="breadcrumbCatalogo">Catálogo</a> / <span id="breadcrumbCat"></span></div>
   </div>
-</aside>
+
+  <div class="product-page__scroll">
+    <div class="wrap product-page__layout">
+
+      <div class="product-gallery">
+        <div class="gallery-main" id="galleryMain">
+          <span class="badge" id="galleryDiscount" style="display:none;"></span>
+          <span class="badge free" id="galleryFree" style="display:none;">Frete grátis</span>
+          <div class="sold-out" id="gallerySoldOut" style="display:none;"><span>Esgotado</span></div>
+          <div id="galleryImage"></div>
+        </div>
+        <div class="gallery-thumbs" id="galleryThumbs"></div>
+      </div>
+
+      <div class="product-info">
+        <span class="drawer-brand" id="drawerBrand"></span>
+        <span class="drawer-cat" id="drawerCat"></span>
+        <h1 class="product-title" id="drawerName"></h1>
+
+        <div class="drawer-prices">
+          <span class="price-old" id="drawerOld"></span>
+          <span class="price-new" id="drawerPrice"></span>
+        </div>
+        <div class="installments" id="installments"></div>
+
+        <div class="field-block">
+          <span class="field-label">Tamanho</span>
+          <div class="size-options" id="sizeOptions"></div>
+        </div>
+
+        <div class="field-block">
+          <span class="field-label">Quantidade</span>
+          <div class="qty-control">
+            <button id="qtyMinus" type="button">−</button>
+            <span id="qtyValue">1</span>
+            <button id="qtyPlus" type="button">+</button>
+          </div>
+        </div>
+
+        <div class="field-block">
+          <span class="field-label">Calcular frete</span>
+          <div class="cep-row">
+            <input id="cepInput" type="text" inputmode="numeric" placeholder="00000-000" maxlength="9">
+            <button id="calcFreteBtn" type="button">Calcular</button>
+          </div>
+          <div class="cep-hint">Não sabe o CEP? <a href="http://www.buscacep.correios.com.br/sistemas/buscacep/" target="_blank">Consultar nos Correios</a></div>
+          <div id="freteResult"></div>
+        </div>
+
+        <button class="drawer-add" id="drawerAddBtn" disabled>Selecione um tamanho</button>
+        <span class="drawer-confirm" id="drawerConfirm">Adicionado ao carrinho ✓</span>
+
+        <div class="payment-methods">
+          <span class="field-label">Formas de pagamento</span>
+          <div class="payment-list">
+            <span>Pix</span><span>Cartão de crédito · até 12x</span><span>Boleto</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrap product-description">
+      <h3>Descrição</h3>
+      <p id="productDescription"></p>
+    </div>
+
+    <div class="wrap similar-products">
+      <h3>Produtos similares</h3>
+      <div class="grid" id="similarGrid"></div>
+    </div>
+  </div>
+</div>
+
 
 <aside class="drawer" id="cartDrawer">
   <button class="drawer-close" id="cartDrawerClose" aria-label="Fechar">×</button>
+  <div class="drawer-scroll">
   <div class="cart-drawer__header">
     <h3>Seu Carrinho</h3>
   </div>
@@ -173,10 +232,12 @@
     </div>
     <button class="drawer-add" id="checkoutBtn" disabled>Selecione o frete</button>
   </div>
+  </div>
 </aside>
 
 <aside class="drawer" id="suggestionDrawer">
   <button class="drawer-close" id="suggestionDrawerClose" aria-label="Fechar">×</button>
+  <div class="drawer-scroll">
   <div class="cart-drawer__header">
     <h3>Sugerir uma peça</h3>
   </div>
@@ -237,9 +298,10 @@
     <p class="cep-hint" id="suggestionImgHint" style="display:none;">Sua foto foi anexada aqui no navegador — o WhatsApp não permite enviar imagem já preenchida por link, então, na conversa que vai abrir, é só anexar essa mesma foto antes de mandar. 📎</p>
     <span class="drawer-confirm" id="suggestionConfirm">Abrindo o WhatsApp...</span>
   </div>
+  </div>
 </aside>
 
-<a class="wa-float" href="https://wa.me/5511972311664" target="_blank" aria-label="WhatsApp">
+<a class="wa-float" href="https://wa.me/5511999999999" target="_blank" aria-label="WhatsApp">
   <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.33 4.95L2 22l5.29-1.39c1.44.79 3.06 1.2 4.71 1.2h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.14c-1.48 0-2.93-.4-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.15 8.15 0 0 1-1.25-4.37c0-4.5 3.66-8.16 8.17-8.16 2.18 0 4.23.85 5.77 2.39a8.1 8.1 0 0 1 2.39 5.78c0 4.51-3.67 8.16-8.1 8.16z"/></svg>
 </a>
 
