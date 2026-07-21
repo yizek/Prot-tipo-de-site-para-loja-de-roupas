@@ -44,46 +44,41 @@
   </div>
 </section>
 
-<div class="filters-bar">
-  <div class="filter-group">
-    <span class="filter-label">Marca</span>
-    <div class="filter-row brands-row" id="brandsRow">
-      <button type="button" class="filter-pill active" data-brand="Todas">Todas</button>
-      <button type="button" class="filter-pill" data-brand="HELLSTAR">Hellstar</button>
-      <button type="button" class="filter-pill" data-brand="CHROME HEARTS">Chrome Hearts</button>
-      <button type="button" class="filter-pill" data-brand="ESSENTIAL FEAR GOD">Essential Fear God</button>
-      <button type="button" class="filter-pill" data-brand="BAPE">Bape</button>
-      <button type="button" class="filter-pill" data-brand="SP5DER">Sp5der</button>
-      <button type="button" class="filter-pill" data-brand="RALPH LAUREN">Ralph Lauren</button>
-      <button type="button" class="filter-pill" data-brand="NIKE TECH">Nike Tech</button>
-    </div>
+<div class="cats-bar">
+  <div class="cats-row" id="categoryFilters">
+    <span class="filter-label">Categoria</span>
+    <a href="#produtos" class="cat-pill active">Todos</a>
+    <a href="#produtos" class="cat-pill">Camisetas</a>
+    <a href="#produtos" class="cat-pill">Moletom / Jaqueta</a>
+    <a href="#produtos" class="cat-pill">Bermudas</a>
+    <a href="#produtos" class="cat-pill">Calças</a>
+    <a href="#produtos" class="cat-pill">Bonés</a>
+    <a href="#produtos" class="cat-pill">Óculos</a>
+    <a href="#produtos" class="cat-pill">Correntes</a>
+    <a href="#produtos" class="cat-pill">Tênis</a>
   </div>
-  <div class="filter-group">
-    <span class="filter-label">Estilo</span>
-    <div class="filter-row cats-row" id="catsRow">
-      <button type="button" class="filter-pill active" data-category="Todos">Todos</button>
-      <button type="button" class="filter-pill" data-category="Camisetas">Camisetas</button>
-      <button type="button" class="filter-pill" data-category="Moletom / Jaqueta">Moletom / Jaqueta</button>
-      <button type="button" class="filter-pill" data-category="Bermudas">Bermudas</button>
-      <button type="button" class="filter-pill" data-category="Calças">Calças</button>
-      <button type="button" class="filter-pill" data-category="Bonés">Bonés</button>
-      <button type="button" class="filter-pill" data-category="Óculos">Óculos</button>
-      <button type="button" class="filter-pill" data-category="Correntes">Correntes</button>
-    </div>
+  <div class="cats-row" id="brandFilters">
+    <span class="filter-label">Marca</span>
+    <button type="button" class="cat-pill brand-pill active" data-brand="Todas">Todas</button>
+    <button type="button" class="cat-pill brand-pill" data-brand="HELLSTAR">Hellstar</button>
+    <button type="button" class="cat-pill brand-pill" data-brand="CHROME HEARTS">Chrome Hearts</button>
+    <button type="button" class="cat-pill brand-pill" data-brand="ESSENTIAL FEAR GOD">Essential Fear God</button>
+    <button type="button" class="cat-pill brand-pill" data-brand="BAPE">Bape</button>
+    <button type="button" class="cat-pill brand-pill" data-brand="SP5DER">Sp5der</button>
+    <button type="button" class="cat-pill brand-pill" data-brand="RALPH LAUREN">Ralph Lauren</button>
+    <button type="button" class="cat-pill brand-pill" data-brand="NIKE TECH">Nike Tech</button>
+    <button type="button" class="cat-pill brand-pill" data-brand="ASICS">Asics</button>
   </div>
 </div>
 
 <section id="produtos">
   <div class="wrap">
     <div class="section-head">
-      <div>
-        <h2 id="catalogTitle">Catálogo</h2>
-        <p class="catalog-subtitle" id="catalogSubtitle">Todas as marcas · Todos os estilos</p>
-      </div>
-      <a href="#" class="see-all" id="clearFiltersBtn">Limpar filtros</a>
+      <h2>Destaques</h2>
+      <a href="#" class="see-all">Ver todos os produtos</a>
     </div>
     <div class="grid" id="productGrid"></div>
-    <p class="catalog-empty" id="catalogEmpty" hidden>Nenhuma peça encontrada com esses filtros. Tente outra marca ou estilo.</p>
+    <p class="catalog-empty" id="catalogEmpty" style="display:none;">Nenhuma peça encontrada com esses filtros. <a href="#" class="see-all" id="clearFiltersLink">Limpar filtros</a></p>
   </div>
 </section>
 
@@ -136,7 +131,6 @@
       </div>
 
       <div class="product-info">
-        <span class="drawer-brand" id="drawerBrand"></span>
         <span class="drawer-cat" id="drawerCat"></span>
         <h1 class="product-title" id="drawerName"></h1>
 
@@ -145,6 +139,11 @@
           <span class="price-new" id="drawerPrice"></span>
         </div>
         <div class="installments" id="installments"></div>
+
+        <div class="field-block" id="colorBlock" style="display:none;">
+          <span class="field-label">Cor: <span id="colorSelectedName"></span></span>
+          <div class="color-options" id="colorOptions"></div>
+        </div>
 
         <div class="field-block">
           <span class="field-label">Tamanho</span>

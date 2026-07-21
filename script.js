@@ -25,36 +25,61 @@ const icons = {
   chain_back: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="7" r="3"/><circle cx="12" cy="17" r="3"/><line x1="12" y1="10" x2="12" y2="14"/></svg>`
 };
 
-const products = [
-  { brand:'ESSENTIAL FEAR GOD', cat:'Camiseta', name:'Essentials Oversized', icon:'tshirt', price:189.90, old:null, stock:true, free:true, sizes:['P','M','G','GG'] },
-  { brand:'HELLSTAR', cat:'Moletom', name:'Hellstar Tracks Hoodie', icon:'hoodie', price:429.90, old:499.90, stock:true, free:true, sizes:['P','M','G','GG'] },
-  { brand:'HELLSTAR', cat:'Camiseta', name:'Hellstar Classic Tee', icon:'tshirt', price:219.90, old:null, stock:true, free:false, sizes:['P','M','G','GG'] },
-  { brand:'CHROME HEARTS', cat:'Moletom', name:'Chrome Hearts Cross Hoodie', icon:'hoodie', price:899.90, old:null, stock:true, free:true, sizes:['P','M','G','GG'] },
-  { brand:'CHROME HEARTS', cat:'Corrente', name:'Chrome Hearts Cuban Link', icon:'chain', price:649.90, old:749.90, stock:true, free:true, sizes:['50cm','60cm','70cm'] },
-  { brand:'BAPE', cat:'Camiseta', name:'Bape Shark Tee', icon:'tshirt', price:349.90, old:null, stock:true, free:true, sizes:['P','M','G','GG'] },
-  { brand:'BAPE', cat:'Boné', name:'Bape ABC Cap', icon:'cap', price:279.90, old:null, stock:true, free:false, sizes:['Único'] },
-  { brand:'SP5DER', cat:'Moletom', name:'Sp5der Web Hoodie', icon:'hoodie', price:389.90, old:449.90, stock:true, free:true, sizes:['P','M','G','GG'] },
-  { brand:'SP5DER', cat:'Bermuda', name:'Sp5der Logo Shorts', icon:'shorts', price:249.90, old:null, stock:false, free:true, sizes:['P','M','G','GG'] },
-  { brand:'RALPH LAUREN', cat:'Camiseta', name:'Polo Bear Tee', icon:'tshirt', price:299.90, old:null, stock:true, free:true, sizes:['P','M','G','GG'] },
-  { brand:'RALPH LAUREN', cat:'Moletom', name:'Ralph Lauren Crew', icon:'hoodie', price:459.90, old:529.90, stock:true, free:true, sizes:['P','M','G','GG'] },
-  { brand:'NIKE TECH', cat:'Moletom', name:'Nike Tech Fleece Hoodie', icon:'hoodie', price:549.90, old:null, stock:true, free:true, sizes:['P','M','G','GG'] },
-  { brand:'NIKE TECH', cat:'Calça', name:'Nike Tech Fleece Pants', icon:'pants', price:499.90, old:579.90, stock:true, free:true, sizes:['P','M','G','GG'] },
-  { brand:'ESSENTIAL FEAR GOD', cat:'Calça', name:'Essentials Fleece Pants', icon:'pants', price:329.90, old:null, stock:true, free:true, sizes:['P','M','G','GG'] },
-  { brand:'BAPE', cat:'Corta-vento', name:'Bape Windbreaker', icon:'jacket', price:599.90, old:null, stock:true, free:false, sizes:['P','M','G','GG'] },
-  { brand:'CHROME HEARTS', cat:'Óculos', name:'Chrome Hearts Aviator', icon:'glasses', price:799.90, old:null, stock:false, free:false, sizes:['Único'] }
+// ícone de tênis: a silhueta acompanha a cor do texto, o detalhe do solado muda pela cor escolhida
+function sneakerIcon(color){
+  return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M2 17c0-1.2.8-2 2-2.3l3.5-.8c1.6-.4 3-1.3 4-2.6l1.6-2c.6-.8 1.6-1.1 2.5-.8l4.6 1.6c1 .3 1.7 1.2 1.8 2.3l.3 2c.1 1.1-.6 2-1.7 2.2L4.5 19c-1.3.2-2.5-.7-2.5-2z"/>
+    <path d="M6 12.5c1.8-.3 3.2-1.2 4.3-2.6l1.4-1.8"/>
+    <path d="M8 10l3 2M10.5 8.3l3 2M13 6.8l2.8 2"/>
+    <path d="M3 16.6c3.6-.6 12-1.1 18-.4" stroke="${color}" stroke-width="2.6"/>
+  </svg>`;
+}
+
+const asicsColors = [
+  {name:'Branco / Prata (Clássica)', hex:'#d4d4d4', img:'images/asics1_white_silver.jpg'},
+  {name:'Creme / Rosa (Cream / Sweet Pink)', hex:'#e8a5b8', img:'images/asics2_cream_pink.jpg'},
+  {name:'Preto / Prata (Black / Pure Silver)', hex:'#222222', img:'images/asics3_black_silver.jpg'},
+  {name:'Azul / Prata (Blue / Silver)', hex:'#1e56a0', img:'images/asics4_blue_silver.jpg'},
+  {name:'Branco / Vermelho (White / Classic Red)', hex:'#c0272d', img:'images/asics5_white_red.jpg'},
+  {name:'Pink / Preto (Pink Gol / Black)', hex:'#e6007e', img:'images/asics6_pink_black.jpg'}
 ];
 
+const products = [
+  {cat:'Camiseta', brand:'ESSENTIAL FEAR GOD', name:'Essentials Oversized', icon:'tshirt', price:189.90, old:null, stock:true, free:true, sizes:['P','M','G','GG']},
+  {cat:'Moletom', brand:'HELLSTAR', name:'State Heavyweight', icon:'hoodie', price:349.90, old:419.90, stock:true, free:true, sizes:['P','M','G','GG']},
+  {cat:'Boné', brand:'BAPE', name:'Aba Reta Classic', icon:'cap', price:129.90, old:null, stock:true, free:false, sizes:['Único']},
+  {cat:'Bermuda', brand:'SP5DER', name:'Cargo Tactel', icon:'shorts', price:199.90, old:null, stock:false, free:true, sizes:['P','M','G','GG']},
+  {cat:'Calça', brand:'NIKE TECH', name:'Jogger Ripstop', icon:'pants', price:289.90, old:339.90, stock:true, free:true, sizes:['38','40','42','44']},
+  {cat:'Corta-vento', brand:'RALPH LAUREN', name:'Windrunner Statewear', icon:'jacket', price:259.90, old:null, stock:true, free:false, sizes:['P','M','G','GG']},
+  {cat:'Óculos', brand:'CHROME HEARTS', name:'Retangular Metal', icon:'glasses', price:149.90, old:null, stock:false, free:false, sizes:['Único']},
+  {cat:'Corrente', brand:'CHROME HEARTS', name:'Cubana Prata 60cm', icon:'chain', price:169.90, old:199.90, stock:true, free:true, sizes:['50cm','60cm','70cm']},
+  {cat:'Tênis', brand:'ASICS', name:'Gel-Kayano 14', img:'images/asics1_white_silver.jpg', icon:'sneaker', price:899.90, old:999.90, stock:true, free:true, sizes:['38','39','40','41','42','43','44'], colors:asicsColors}
+];
+
+const brands = ['HELLSTAR', 'CHROME HEARTS', 'ESSENTIAL FEAR GOD', 'BAPE', 'SP5DER', 'RALPH LAUREN', 'NIKE TECH', 'ASICS'];
+
 const money = v => v.toLocaleString('pt-BR', {minimumFractionDigits:2, maximumFractionDigits:2});
+
+function cardFrontIcon(p){
+  if (p.img) {
+    return `<img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;">`;
+  }
+  return p.icon === 'sneaker' ? sneakerIcon(p.accentColor || (p.colors && p.colors[0] ? p.colors[0].hex : '#000')) : icons[p.icon + '_front'];
+}
+function cardBackIcon(p){
+  if (p.img) {
+    return `<img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;">`;
+  }
+  return p.icon === 'sneaker' ? '' : icons[p.icon + '_back'];
+}
 
 let activeCategory = 'Todos';
 let activeBrand = 'Todas';
 
-function matchesCategory(product, categoryFilter) {
+function matchesCategory(p, categoryFilter) {
   if (!categoryFilter || categoryFilter === 'Todos') return true;
-
-  const catLower = product.cat.toLowerCase();
+  const catLower = p.cat.toLowerCase();
   const filterLower = categoryFilter.toLowerCase();
-
   if (filterLower === 'camisetas') return catLower === 'camiseta';
   if (filterLower === 'moletom / jaqueta') return catLower === 'moletom' || catLower === 'corta-vento';
   if (filterLower === 'bermudas') return catLower === 'bermuda';
@@ -62,44 +87,40 @@ function matchesCategory(product, categoryFilter) {
   if (filterLower === 'bonés') return catLower === 'boné';
   if (filterLower === 'óculos') return catLower === 'óculos';
   if (filterLower === 'correntes') return catLower === 'corrente';
-
   return catLower === filterLower;
 }
 
-function matchesBrand(product, brandFilter) {
+function matchesBrand(p, brandFilter) {
   if (!brandFilter || brandFilter === 'Todas') return true;
-  return product.brand === brandFilter;
+  return p.brand === brandFilter;
 }
 
-function filterProducts(categoryFilter = activeCategory, brandFilter = activeBrand) {
-  return products.filter(p => matchesCategory(p, categoryFilter) && matchesBrand(p, brandFilter));
-}
+function renderProducts(categoryFilter = activeCategory, brandFilter = activeBrand) {
+  activeCategory = categoryFilter;
+  activeBrand = brandFilter;
 
-function formatBrandLabel(brand) {
-  if (brand === 'Todas') return 'Todas as marcas';
-  return brand;
-}
+  const filtered = products.filter(p => matchesCategory(p, categoryFilter) && matchesBrand(p, brandFilter));
 
-function formatCategoryLabel(category) {
-  if (category === 'Todos') return 'Todos os estilos';
-  return category;
-}
+  const grid = document.getElementById('productGrid');
+  const emptyMsg = document.getElementById('catalogEmpty');
 
-function updateCatalogSubtitle() {
-  const subtitle = document.getElementById('catalogSubtitle');
-  if (!subtitle) return;
-  subtitle.textContent = `${formatBrandLabel(activeBrand)} · ${formatCategoryLabel(activeCategory)}`;
-}
+  if (filtered.length === 0) {
+    grid.innerHTML = '';
+    if (emptyMsg) emptyMsg.style.display = 'block';
+    return;
+  }
+  if (emptyMsg) emptyMsg.style.display = 'none';
 
-function renderProductCard(p, originalIndex) {
-  const discount = p.old ? Math.round((1 - p.price / p.old) * 100) : null;
-  return `
+  grid.innerHTML = filtered.map((p) => {
+    const originalIndex = products.indexOf(p);
+    const discount = p.old ? Math.round((1 - p.price/p.old)*100) : null;
+    return `
     <div class="card" data-index="${originalIndex}">
       <div class="card__media">
         ${discount ? `<span class="badge">-${discount}%</span>` : ''}
         ${p.free ? `<span class="badge free">Frete grátis</span>` : ''}
-        <div class="angle front">${icons[p.icon + '_front']}</div>
-        <div class="angle back">${icons[p.icon + '_back']}</div>
+        <div class="angle front">${cardFrontIcon(p)}</div>
+        <div class="angle back">${cardBackIcon(p)}</div>
         ${!p.stock ? `<div class="sold-out"><span>Esgotado</span></div>` : ''}
       </div>
       <div class="card__body">
@@ -115,65 +136,55 @@ function renderProductCard(p, originalIndex) {
         </button>
       </div>
     </div>`;
-}
-
-function renderProducts(categoryFilter = activeCategory, brandFilter = activeBrand) {
-  activeCategory = categoryFilter;
-  activeBrand = brandFilter;
-
-  const filtered = filterProducts(categoryFilter, brandFilter);
-  const grid = document.getElementById('productGrid');
-  const emptyState = document.getElementById('catalogEmpty');
-
-  grid.innerHTML = filtered.map(p => renderProductCard(p, products.indexOf(p))).join('');
-  grid.hidden = filtered.length === 0;
-  if (emptyState) emptyState.hidden = filtered.length > 0;
-
-  updateCatalogSubtitle();
-}
-
-function setActiveFilterPill(container, selector, activeValue, dataAttr) {
-  container.querySelectorAll(selector).forEach(pill => {
-    pill.classList.toggle('active', pill.dataset[dataAttr] === activeValue);
-  });
-}
-
-function resetFilters() {
-  activeCategory = 'Todos';
-  activeBrand = 'Todas';
-  setActiveFilterPill(document.getElementById('catsRow'), '.filter-pill', 'Todos', 'category');
-  setActiveFilterPill(document.getElementById('brandsRow'), '.filter-pill', 'Todas', 'brand');
-  renderProducts('Todos', 'Todas');
+  }).join('');
 }
 
 // Inicializar vitrine
 renderProducts('Todos', 'Todas');
 
-// ---------- filtros de marca e estilo ----------
-document.getElementById('catsRow').addEventListener('click', e => {
-  const pill = e.target.closest('.filter-pill');
+// ---------- filtro de categorias ----------
+document.querySelector('#categoryFilters').addEventListener('click', e => {
+  const pill = e.target.closest('.cat-pill');
   if (!pill) return;
-
-  activeCategory = pill.dataset.category;
-  setActiveFilterPill(document.getElementById('catsRow'), '.filter-pill', activeCategory, 'category');
-  renderProducts(activeCategory, activeBrand);
-  document.querySelector('#produtos').scrollIntoView({ behavior: 'smooth' });
-});
-
-document.getElementById('brandsRow').addEventListener('click', e => {
-  const pill = e.target.closest('.filter-pill');
-  if (!pill) return;
-
-  activeBrand = pill.dataset.brand;
-  setActiveFilterPill(document.getElementById('brandsRow'), '.filter-pill', activeBrand, 'brand');
-  renderProducts(activeCategory, activeBrand);
-  document.querySelector('#produtos').scrollIntoView({ behavior: 'smooth' });
-});
-
-document.getElementById('clearFiltersBtn').addEventListener('click', e => {
   e.preventDefault();
-  resetFilters();
+
+  document.querySelectorAll('#categoryFilters .cat-pill').forEach(p => p.classList.remove('active'));
+  pill.classList.add('active');
+
+  const category = pill.textContent.trim();
+  renderProducts(category, activeBrand);
   document.querySelector('#produtos').scrollIntoView({ behavior: 'smooth' });
+});
+
+// ---------- filtro de marcas ----------
+document.querySelector('#brandFilters').addEventListener('click', e => {
+  const pill = e.target.closest('.brand-pill');
+  if (!pill) return;
+  e.preventDefault();
+
+  document.querySelectorAll('#brandFilters .brand-pill').forEach(p => p.classList.remove('active'));
+  pill.classList.add('active');
+
+  const brand = pill.dataset.brand;
+  renderProducts(activeCategory, brand);
+  document.querySelector('#produtos').scrollIntoView({ behavior: 'smooth' });
+});
+
+// Reset dos filtros (categoria + marca)
+function resetFilters(e){
+  if (e) e.preventDefault();
+  document.querySelectorAll('#categoryFilters .cat-pill').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('#brandFilters .brand-pill').forEach(p => p.classList.remove('active'));
+  const todosPill = document.querySelector('#categoryFilters a.cat-pill:first-of-type');
+  const todasPill = document.querySelector('#brandFilters button.brand-pill:first-of-type');
+  if (todosPill) todosPill.classList.add('active');
+  if (todasPill) todasPill.classList.add('active');
+  renderProducts('Todos', 'Todas');
+  document.querySelector('#produtos').scrollIntoView({ behavior: 'smooth' });
+}
+
+document.querySelectorAll('.see-all').forEach(link => {
+  link.addEventListener('click', resetFilters);
 });
 
 // ---------- carrinho (visual, sem persistência) ----------
@@ -202,8 +213,13 @@ const breadcrumbCatEl = document.getElementById('breadcrumbCat');
 let currentProduct = null;
 let currentIndex = null;
 let selectedSize = null;
+let selectedColor = null;
 let qty = 1;
 let freteCalculado = null;
+
+const colorBlockEl = document.getElementById('colorBlock');
+const colorOptionsEl = document.getElementById('colorOptions');
+const colorSelectedNameEl = document.getElementById('colorSelectedName');
 
 // descrições genéricas por tipo de peça (reaproveitadas entre produtos do mesmo tipo)
 const descriptions = {
@@ -214,11 +230,12 @@ const descriptions = {
   pants: 'Calça em ripstop resistente, corte jogger com punho no tornozelo. Conforto de moletom com cara de calça de grife.',
   jacket: 'Corta-vento em nylon impermeável, forro leve e capuz ajustável. Proteção contra vento e chuva fraca sem abrir mão do estilo.',
   glasses: 'Óculos com armação retangular em metal e lentes com proteção UV. Acessório que fecha qualquer produção streetwear.',
-  chain: 'Corrente banhada, elo grosso e fecho reforçado. Acessório statement pra dar aquele toque a mais no visual.'
+  chain: 'Corrente banhada, elo grosso e fecho reforçado. Acessório statement pra dar aquele toque a mais no visual.',
+  sneaker: 'Tênis de corrida com amortecimento em gel, cabedal respirável e entressola resistente. Conforto pro dia a dia com visual de peça de grife.'
 };
 
-function updateBreadcrumb(cat){
-  breadcrumbCatEl.textContent = cat;
+function updateBreadcrumb(cat, brand){
+  breadcrumbCatEl.textContent = `${brand} / ${cat}`;
 }
 
 function renderInstallments(price){
@@ -227,11 +244,37 @@ function renderInstallments(price){
 }
 
 function renderGallery(p){
-  galleryImageEl.innerHTML = icons[p.icon + '_front'];
-  galleryThumbsEl.innerHTML = `
-    <div class="gallery-thumb active" data-angle="front">${icons[p.icon + '_front']}</div>
-    <div class="gallery-thumb" data-angle="back">${icons[p.icon + '_back']}</div>
-  `;
+  if (p.colors && p.colors.length) {
+    selectedColor = p.colors[0];
+    const initialImg = selectedColor.img || p.img;
+    
+    galleryImageEl.innerHTML = initialImg 
+      ? `<img src="${initialImg}" alt="${selectedColor.name}" style="width:100%;height:100%;object-fit:cover;">`
+      : sneakerIcon(selectedColor.hex);
+      
+    galleryThumbsEl.innerHTML = p.colors.map((c, i) => `
+      <div class="gallery-thumb ${i === 0 ? 'active' : ''}" data-color-index="${i}">
+        ${c.img ? `<img src="${c.img}" alt="${c.name}" style="width:100%;height:100%;object-fit:cover;">` : sneakerIcon(c.hex)}
+      </div>
+    `).join('');
+
+    colorBlockEl.style.display = 'block';
+    colorSelectedNameEl.textContent = selectedColor.name;
+    colorOptionsEl.innerHTML = p.colors.map((c, i) => `
+      <button type="button" class="color-opt ${i === 0 ? 'selected' : ''}" data-color-index="${i}" title="${c.name}" aria-label="${c.name}">
+        <span class="color-opt__swatch" style="background:${c.hex}"></span>
+      </button>
+    `).join('');
+  } else {
+    colorBlockEl.style.display = 'none';
+    colorOptionsEl.innerHTML = '';
+    const imgFront = p.img ? `<img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;">` : icons[p.icon + '_front'];
+    galleryImageEl.innerHTML = imgFront;
+    galleryThumbsEl.innerHTML = `
+      <div class="gallery-thumb active" data-angle="front">${imgFront}</div>
+      ${p.icon !== 'sneaker' ? `<div class="gallery-thumb" data-angle="back">${icons[p.icon + '_back']}</div>` : ''}
+    `;
+  }
 
   const discount = p.old ? Math.round((1 - p.price / p.old) * 100) : null;
   if (discount) {
@@ -247,22 +290,53 @@ function renderGallery(p){
 galleryThumbsEl && galleryThumbsEl.addEventListener('click', e => {
   const thumb = e.target.closest('.gallery-thumb');
   if (!thumb || !currentProduct) return;
+  
+  if (thumb.dataset.colorIndex !== undefined) {
+    const index = Number(thumb.dataset.colorIndex);
+    const color = currentProduct.colors[index];
+    selectedColor = color;
+    
+    galleryThumbsEl.querySelectorAll('.gallery-thumb').forEach(t => t.classList.toggle('active', t === thumb));
+    colorOptionsEl.querySelectorAll('.color-opt').forEach((b, i) => b.classList.toggle('selected', i === index));
+    colorSelectedNameEl.textContent = color.name;
+    
+    if (color.img) {
+      galleryImageEl.innerHTML = `<img src="${color.img}" alt="${color.name}" style="width:100%;height:100%;object-fit:cover;">`;
+    } else {
+      galleryImageEl.innerHTML = sneakerIcon(color.hex);
+    }
+    updateAddButton();
+    return;
+  }
+  
   galleryThumbsEl.querySelectorAll('.gallery-thumb').forEach(t => t.classList.toggle('active', t === thumb));
   galleryImageEl.innerHTML = icons[currentProduct.icon + '_' + thumb.dataset.angle];
+});
+
+colorOptionsEl && colorOptionsEl.addEventListener('click', e => {
+  const btn = e.target.closest('.color-opt');
+  if (!btn || !currentProduct || !currentProduct.colors) return;
+  const index = Number(btn.dataset.colorIndex);
+  const color = currentProduct.colors[index];
+  selectedColor = color;
+  
+  colorOptionsEl.querySelectorAll('.color-opt').forEach(b => b.classList.toggle('selected', b === btn));
+  galleryThumbsEl.querySelectorAll('.gallery-thumb').forEach((t, i) => t.classList.toggle('active', i === index));
+  
+  colorSelectedNameEl.textContent = color.name;
+  if (color.img) {
+    galleryImageEl.innerHTML = `<img src="${color.img}" alt="${color.name}" style="width:100%;height:100%;object-fit:cover;">`;
+  } else {
+    galleryImageEl.innerHTML = sneakerIcon(color.hex);
+  }
+  updateAddButton();
 });
 
 function renderSimilar(p, index){
   let similares = products
     .map((prod, i) => ({ prod, i }))
-    .filter(item => item.prod.brand === p.brand && item.i !== index)
+    .filter(item => item.prod.cat === p.cat && item.i !== index)
     .slice(0, 4);
-
-  if (similares.length === 0) {
-    similares = products
-      .map((prod, i) => ({ prod, i }))
-      .filter(item => item.prod.cat === p.cat && item.i !== index)
-      .slice(0, 4);
-  }
 
   // fallback: catálogo ainda pequeno, sem outra peça da mesma categoria — mostra outras peças
   if (similares.length === 0) {
@@ -277,7 +351,28 @@ function renderSimilar(p, index){
     return;
   }
 
-  similarGridEl.innerHTML = similares.map(({ prod, i }) => renderProductCard(prod, i)).join('');
+  similarGridEl.innerHTML = similares.map(({ prod, i }) => {
+    const discount = prod.old ? Math.round((1 - prod.price / prod.old) * 100) : null;
+    return `
+    <div class="card" data-index="${i}">
+      <div class="card__media">
+        ${discount ? `<span class="badge">-${discount}%</span>` : ''}
+        ${prod.free ? `<span class="badge free">Frete grátis</span>` : ''}
+        <div class="angle front">${cardFrontIcon(prod)}</div>
+        <div class="angle back">${cardBackIcon(prod)}</div>
+        ${!prod.stock ? `<div class="sold-out"><span>Esgotado</span></div>` : ''}
+      </div>
+      <div class="card__body">
+        <span class="card__cat">${prod.cat}</span>
+        <span class="card__name">${prod.name}</span>
+        <div class="card__prices">
+          ${prod.old ? `<span class="price-old">R$ ${money(prod.old)}</span>` : ''}
+          <span class="price-new">R$ ${money(prod.price)}</span>
+        </div>
+        <button class="add-btn" data-index="${i}">${prod.stock ? 'Comprar' : 'Esgotado'}</button>
+      </div>
+    </div>`;
+  }).join('');
 }
 
 similarGridEl && similarGridEl.addEventListener('click', e => {
@@ -291,13 +386,13 @@ function openDrawer(index){
   currentProduct = p;
   currentIndex = index;
   selectedSize = null;
+  selectedColor = null;
   qty = 1;
   freteCalculado = null;
 
-  updateBreadcrumb(p.cat);
+  updateBreadcrumb(p.cat, p.brand);
   renderGallery(p);
-  document.getElementById('drawerBrand').textContent = p.brand;
-  document.getElementById('drawerCat').textContent = p.cat;
+  document.getElementById('drawerCat').textContent = `${p.brand} · ${p.cat}`;
   document.getElementById('drawerName').textContent = p.name;
   document.getElementById('drawerOld').textContent = p.old ? `R$ ${money(p.old)}` : '';
   document.getElementById('drawerPrice').textContent = `R$ ${money(p.price)}`;
@@ -333,6 +428,9 @@ function updateAddButton(){
   if (!selectedSize){
     drawerAddBtn.disabled = true;
     drawerAddBtn.textContent = 'Selecione um tamanho';
+  } else if (currentProduct.colors && !selectedColor){
+    drawerAddBtn.disabled = true;
+    drawerAddBtn.textContent = 'Selecione uma cor';
   } else {
     drawerAddBtn.disabled = false;
     drawerAddBtn.textContent = 'Adicionar ao carrinho';
@@ -451,7 +549,7 @@ document.getElementById('calcFreteBtn').addEventListener('click', async () => {
 drawerAddBtn.addEventListener('click', () => {
   if (drawerAddBtn.disabled) return;
   
-  addToCart(currentProduct, selectedSize, qty);
+  addToCart(currentProduct, selectedSize, qty, selectedColor);
   
   drawerConfirm.classList.add('show');
   setTimeout(() => { closeDrawer(); }, 900);
@@ -521,14 +619,16 @@ function closeCartDrawer() {
 cartBtn.addEventListener('click', openCartDrawer);
 cartDrawerClose.addEventListener('click', closeCartDrawer);
 
-function addToCart(product, size, quantity) {
-  const existingIndex = cart.findIndex(item => item.product.name === product.name && item.size === size);
+function addToCart(product, size, quantity, color) {
+  const colorName = color ? color.name : null;
+  const existingIndex = cart.findIndex(item => item.product.name === product.name && item.size === size && item.colorName === colorName);
   if (existingIndex > -1) {
     cart[existingIndex].qty += quantity;
   } else {
     cart.push({
       product: product,
       size: size,
+      colorName: colorName,
       qty: quantity
     });
   }
@@ -575,16 +675,23 @@ function renderCart() {
     const itemTotal = item.product.price * item.qty;
     subtotal += itemTotal;
 
+    const colorObj = item.product.colors ? item.product.colors.find(c => c.name === item.colorName) : null;
+    const cartMediaHTML = (colorObj && colorObj.img)
+      ? `<img src="${colorObj.img}" alt="${item.product.name}" style="width:100%;height:100%;object-fit:cover;">`
+      : (item.product.img 
+          ? `<img src="${item.product.img}" alt="${item.product.name}" style="width:100%;height:100%;object-fit:cover;">`
+          : (item.product.icon === 'sneaker' ? sneakerIcon((colorObj || (item.product.colors && item.product.colors[0])).hex) : icons[item.product.icon + '_front']));
+
     return `
       <div class="cart-item">
         <div class="cart-item__media">
-          ${icons[item.product.icon + '_front']}
+          ${cartMediaHTML}
         </div>
         <div class="cart-item__info">
           <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
             <div>
               <h4 class="cart-item__name" style="margin:0; font-size:13px; line-height:1.2;">${item.product.name}</h4>
-              <span class="cart-item__meta">${item.product.brand} · Tam: ${item.size} · ${item.product.cat}</span>
+              <span class="cart-item__meta">Tam: ${item.size}${item.colorName ? ' · Cor: ' + item.colorName : ''} · ${item.product.cat}</span>
             </div>
             <button class="cart-item__remove" onclick="removeFromCart(${idx})">Remover</button>
           </div>
@@ -725,7 +832,8 @@ checkoutBtn.addEventListener('click', () => {
 
   cart.forEach(item => {
     const itemTotal = item.product.price * item.qty;
-    message += `• ${item.qty}x ${item.product.name} (${item.product.brand} · Tam: ${item.size}) - R$ ${money(itemTotal)}\n`;
+    const corTexto = item.colorName ? `, Cor: ${item.colorName}` : '';
+    message += `• ${item.qty}x ${item.product.name} (Tamanho: ${item.size}${corTexto}) - R$ ${money(itemTotal)}\n`;
   });
 
   const freteLabel = cartFrete.tipo === 'sedex' ? 'SEDEX' : 'PAC';
