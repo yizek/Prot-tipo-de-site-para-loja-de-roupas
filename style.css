@@ -1,10 +1,10 @@
 :root {
-  --white: #0b0b0b;
+  --white: #000000;
   --black: #f2f1ee;
   --red: #e30613;
   --gray: #9a9a94;
   --line: rgba(242, 241, 238, 0.14);
-  --off: #161613;
+  --off: #0c0c0b;
 }
 
 * {
@@ -324,6 +324,13 @@ section {
   stroke: var(--black);
 }
 
+.card__media .angle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .card__media .angle.back {
   opacity: 0;
   display: none;
@@ -354,7 +361,7 @@ section {
 .sold-out {
   position: absolute;
   inset: 0;
-  background: rgba(10, 10, 10, .78);
+  background: rgba(0, 0, 0, .82);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -498,7 +505,7 @@ footer {
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(11, 11, 11, .5);
+  background: rgba(0, 0, 0, .6);
   z-index: 300;
   opacity: 0;
   pointer-events: none;
@@ -745,13 +752,14 @@ footer {
 }
 
 .color-opt {
-  width: 34px;
-  height: 34px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
   border: 2px solid var(--line);
   cursor: pointer;
   padding: 2px;
   position: relative;
+  background: var(--off);
 }
 
 .color-opt__swatch {
@@ -760,6 +768,8 @@ footer {
   height: 100%;
   border-radius: 50%;
   border: 1px solid rgba(0, 0, 0, .25);
+  object-fit: cover;
+  object-position: center;
 }
 
 .color-opt:hover {
@@ -1111,6 +1121,13 @@ footer {
   stroke: var(--black);
 }
 
+.cart-item__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .cart-item__info {
   flex: 1;
   display: flex;
@@ -1321,6 +1338,19 @@ footer {
   stroke: var(--black);
 }
 
+.gallery-main img,
+.gallery-main #galleryImage {
+  width: 100%;
+  height: 100%;
+}
+
+.gallery-main #galleryImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .gallery-thumbs {
   display: flex;
   gap: 10px;
@@ -1431,21 +1461,4 @@ footer {
     width: 40%;
     height: 40%;
   }
-}
-
-
-/* Responsive tweaks */
-@media (max-width:768px){
-  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;}
-}
-@media (max-width:480px){
-  .wrap{padding:0 16px;}
-  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}
-  .card__body{padding:10px;}
-  .card__name{font-size:13px;}
-  .price-new{font-size:15px;}
-  .add-btn{padding:8px;font-size:11px;}
-}
-@media (max-width:340px){
- .grid{grid-template-columns:1fr;}
 }

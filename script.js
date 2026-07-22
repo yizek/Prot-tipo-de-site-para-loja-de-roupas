@@ -25,24 +25,10 @@ const icons = {
   chain_back: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="7" r="3"/><circle cx="12" cy="17" r="3"/><line x1="12" y1="10" x2="12" y2="14"/></svg>`
 };
 
-// ícone de tênis: a silhueta acompanha a cor do texto, o detalhe do solado muda pela cor escolhida
-function sneakerIcon(color){
-  return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round">
-    <path d="M2 17c0-1.2.8-2 2-2.3l3.5-.8c1.6-.4 3-1.3 4-2.6l1.6-2c.6-.8 1.6-1.1 2.5-.8l4.6 1.6c1 .3 1.7 1.2 1.8 2.3l.3 2c.1 1.1-.6 2-1.7 2.2L4.5 19c-1.3.2-2.5-.7-2.5-2z"/>
-    <path d="M6 12.5c1.8-.3 3.2-1.2 4.3-2.6l1.4-1.8"/>
-    <path d="M8 10l3 2M10.5 8.3l3 2M13 6.8l2.8 2"/>
-    <path d="M3 16.6c3.6-.6 12-1.1 18-.4" stroke="${color}" stroke-width="2.6"/>
-  </svg>`;
+// tênis: agora usa foto real por cor, em vez do ícone placeholder
+function sneakerImg(color, extraClass){
+  return `<img src="${color.img}" alt="ASICS Gel Kayano 14 - ${color.name}"${extraClass ? ` class="${extraClass}"` : ''}>`;
 }
-
-const asicsColors = [
-  {name:'Branco / Prata (Clássica)', hex:'#d4d4d4', img:'images/asics1_white_silver.jpg'},
-  {name:'Creme / Rosa (Cream / Sweet Pink)', hex:'#e8a5b8', img:'images/asics2_cream_pink.jpg'},
-  {name:'Preto / Prata (Black / Pure Silver)', hex:'#222222', img:'images/asics3_black_silver.jpg'},
-  {name:'Azul / Prata (Blue / Silver)', hex:'#1e56a0', img:'images/asics4_blue_silver.jpg'},
-  {name:'Branco / Vermelho (White / Classic Red)', hex:'#c0272d', img:'images/asics5_white_red.jpg'},
-  {name:'Pink / Preto (Pink Gol / Black)', hex:'#e6007e', img:'images/asics6_pink_black.jpg'}
-];
 
 const products = [
   {cat:'Camiseta', brand:'ESSENTIAL FEAR GOD', name:'Essentials Oversized', icon:'tshirt', price:189.90, old:null, stock:true, free:true, sizes:['P','M','G','GG']},
@@ -53,7 +39,15 @@ const products = [
   {cat:'Corta-vento', brand:'RALPH LAUREN', name:'Windrunner Statewear', icon:'jacket', price:259.90, old:null, stock:true, free:false, sizes:['P','M','G','GG']},
   {cat:'Óculos', brand:'CHROME HEARTS', name:'Retangular Metal', icon:'glasses', price:149.90, old:null, stock:false, free:false, sizes:['Único']},
   {cat:'Corrente', brand:'CHROME HEARTS', name:'Cubana Prata 60cm', icon:'chain', price:169.90, old:199.90, stock:true, free:true, sizes:['50cm','60cm','70cm']},
-  {cat:'Tênis', brand:'ASICS', name:'Gel-Kayano 14', img:'images/asics1_white_silver.jpg', icon:'sneaker', price:899.90, old:999.90, stock:true, free:true, sizes:['38','39','40','41','42','43','44'], colors:asicsColors}
+  {cat:'Tênis', brand:'ASICS', name:'Gel Kayano 14', icon:'sneaker', price:899.90, old:999.90, stock:true, free:true, sizes:['38','39','40','41','42','43','44'],
+    colors:[
+      {name:'Classic', img:'images/asics1.jpg'},
+      {name:'Cream / Sweet Pink', img:'images/asics2.jpg'},
+      {name:'Black / Pure Silver', img:'images/asics3.jpg'},
+      {name:'Blue / Silver', img:'images/asics4.jpg'},
+      {name:'White / Classic Red', img:'images/asics5.jpg'},
+      {name:'Pink Gol / Black', img:'images/asics6.jpg'}
+    ]}
 ];
 
 const brands = ['HELLSTAR', 'CHROME HEARTS', 'ESSENTIAL FEAR GOD', 'BAPE', 'SP5DER', 'RALPH LAUREN', 'NIKE TECH', 'ASICS'];
@@ -61,15 +55,9 @@ const brands = ['HELLSTAR', 'CHROME HEARTS', 'ESSENTIAL FEAR GOD', 'BAPE', 'SP5D
 const money = v => v.toLocaleString('pt-BR', {minimumFractionDigits:2, maximumFractionDigits:2});
 
 function cardFrontIcon(p){
-  if (p.img) {
-    return `<img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;">`;
-  }
-  return p.icon === 'sneaker' ? sneakerIcon(p.accentColor || (p.colors && p.colors[0] ? p.colors[0].hex : '#000')) : icons[p.icon + '_front'];
+  return p.icon === 'sneaker' ? sneakerImg(p.colors[0]) : icons[p.icon + '_front'];
 }
 function cardBackIcon(p){
-  if (p.img) {
-    return `<img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;">`;
-  }
   return p.icon === 'sneaker' ? '' : icons[p.icon + '_back'];
 }
 
@@ -245,34 +233,24 @@ function renderInstallments(price){
 
 function renderGallery(p){
   if (p.colors && p.colors.length) {
-    selectedColor = p.colors[0];
-    const initialImg = selectedColor.img || p.img;
-    
-    galleryImageEl.innerHTML = initialImg 
-      ? `<img src="${initialImg}" alt="${selectedColor.name}" style="width:100%;height:100%;object-fit:cover;">`
-      : sneakerIcon(selectedColor.hex);
-      
-    galleryThumbsEl.innerHTML = p.colors.map((c, i) => `
-      <div class="gallery-thumb ${i === 0 ? 'active' : ''}" data-color-index="${i}">
-        ${c.img ? `<img src="${c.img}" alt="${c.name}" style="width:100%;height:100%;object-fit:cover;">` : sneakerIcon(c.hex)}
-      </div>
-    `).join('');
+    selectedColor = null;
+    galleryImageEl.innerHTML = sneakerImg(p.colors[0]);
+    galleryThumbsEl.innerHTML = '';
 
     colorBlockEl.style.display = 'block';
-    colorSelectedNameEl.textContent = selectedColor.name;
+    colorSelectedNameEl.textContent = '';
     colorOptionsEl.innerHTML = p.colors.map((c, i) => `
-      <button type="button" class="color-opt ${i === 0 ? 'selected' : ''}" data-color-index="${i}" title="${c.name}" aria-label="${c.name}">
-        <span class="color-opt__swatch" style="background:${c.hex}"></span>
+      <button type="button" class="color-opt" data-color-index="${i}" title="${c.name}" aria-label="${c.name}">
+        <img class="color-opt__swatch" src="${c.img}" alt="${c.name}">
       </button>
     `).join('');
   } else {
     colorBlockEl.style.display = 'none';
     colorOptionsEl.innerHTML = '';
-    const imgFront = p.img ? `<img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;">` : icons[p.icon + '_front'];
-    galleryImageEl.innerHTML = imgFront;
+    galleryImageEl.innerHTML = icons[p.icon + '_front'];
     galleryThumbsEl.innerHTML = `
-      <div class="gallery-thumb active" data-angle="front">${imgFront}</div>
-      ${p.icon !== 'sneaker' ? `<div class="gallery-thumb" data-angle="back">${icons[p.icon + '_back']}</div>` : ''}
+      <div class="gallery-thumb active" data-angle="front">${icons[p.icon + '_front']}</div>
+      <div class="gallery-thumb" data-angle="back">${icons[p.icon + '_back']}</div>
     `;
   }
 
@@ -290,25 +268,6 @@ function renderGallery(p){
 galleryThumbsEl && galleryThumbsEl.addEventListener('click', e => {
   const thumb = e.target.closest('.gallery-thumb');
   if (!thumb || !currentProduct) return;
-  
-  if (thumb.dataset.colorIndex !== undefined) {
-    const index = Number(thumb.dataset.colorIndex);
-    const color = currentProduct.colors[index];
-    selectedColor = color;
-    
-    galleryThumbsEl.querySelectorAll('.gallery-thumb').forEach(t => t.classList.toggle('active', t === thumb));
-    colorOptionsEl.querySelectorAll('.color-opt').forEach((b, i) => b.classList.toggle('selected', i === index));
-    colorSelectedNameEl.textContent = color.name;
-    
-    if (color.img) {
-      galleryImageEl.innerHTML = `<img src="${color.img}" alt="${color.name}" style="width:100%;height:100%;object-fit:cover;">`;
-    } else {
-      galleryImageEl.innerHTML = sneakerIcon(color.hex);
-    }
-    updateAddButton();
-    return;
-  }
-  
   galleryThumbsEl.querySelectorAll('.gallery-thumb').forEach(t => t.classList.toggle('active', t === thumb));
   galleryImageEl.innerHTML = icons[currentProduct.icon + '_' + thumb.dataset.angle];
 });
@@ -316,19 +275,11 @@ galleryThumbsEl && galleryThumbsEl.addEventListener('click', e => {
 colorOptionsEl && colorOptionsEl.addEventListener('click', e => {
   const btn = e.target.closest('.color-opt');
   if (!btn || !currentProduct || !currentProduct.colors) return;
-  const index = Number(btn.dataset.colorIndex);
-  const color = currentProduct.colors[index];
+  const color = currentProduct.colors[Number(btn.dataset.colorIndex)];
   selectedColor = color;
-  
   colorOptionsEl.querySelectorAll('.color-opt').forEach(b => b.classList.toggle('selected', b === btn));
-  galleryThumbsEl.querySelectorAll('.gallery-thumb').forEach((t, i) => t.classList.toggle('active', i === index));
-  
   colorSelectedNameEl.textContent = color.name;
-  if (color.img) {
-    galleryImageEl.innerHTML = `<img src="${color.img}" alt="${color.name}" style="width:100%;height:100%;object-fit:cover;">`;
-  } else {
-    galleryImageEl.innerHTML = sneakerIcon(color.hex);
-  }
+  galleryImageEl.innerHTML = sneakerImg(color);
   updateAddButton();
 });
 
@@ -675,17 +626,10 @@ function renderCart() {
     const itemTotal = item.product.price * item.qty;
     subtotal += itemTotal;
 
-    const colorObj = item.product.colors ? item.product.colors.find(c => c.name === item.colorName) : null;
-    const cartMediaHTML = (colorObj && colorObj.img)
-      ? `<img src="${colorObj.img}" alt="${item.product.name}" style="width:100%;height:100%;object-fit:cover;">`
-      : (item.product.img 
-          ? `<img src="${item.product.img}" alt="${item.product.name}" style="width:100%;height:100%;object-fit:cover;">`
-          : (item.product.icon === 'sneaker' ? sneakerIcon((colorObj || (item.product.colors && item.product.colors[0])).hex) : icons[item.product.icon + '_front']));
-
     return `
       <div class="cart-item">
         <div class="cart-item__media">
-          ${cartMediaHTML}
+          ${item.product.icon === 'sneaker' ? sneakerImg(item.product.colors.find(c => c.name === item.colorName) || item.product.colors[0]) : icons[item.product.icon + '_front']}
         </div>
         <div class="cart-item__info">
           <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
