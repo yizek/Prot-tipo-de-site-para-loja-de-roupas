@@ -61,7 +61,22 @@ const products = [
     colors:[
       {name:'Cinza', img:'images/birken_boston_grey.png'},
       {name:'Preto', img:'images/birken_boston_black.png'}
-    ]}
+    ]},
+  {cat:'Tênis', brand:'JORDAN', name:'JORDAN 5', icon:'sneaker', price:899.90, old:999.90, stock:true, free:true, sizes:['38','39','40','41','42','43','44'],
+    colors:[
+      {name:'Preto', img:'images/jordan5_black.png'},
+      {name:'Branco', img:'images/jordan5_white.png'},
+      {name:'Branco / Roxo', img:'images/jordan5_whitepurple.png'}]
+  },
+  {cat:'Tênis', brand:'DIOR', name:'B30', icon:'sneaker', price:899.90, old:999.90, stock:true, free:true, sizes:['38','39','40','41','42','43','44'],
+    colors:[
+      {name:'Branco', img:'images/b30_branco.jpg'},
+      {name:'Bege', img:'images/b30_bege.jpg'},
+      {name:'Azul', img:'images/b30_azul.jpg'},
+      {name:'Preto', img:'images/b30_preto.jpg'},
+      {name:'Preto / Bege', img:'images/b30_pretobege.jpg'}
+  ]
+  }
 ];
 
 const brands = ['HELLSTAR', 'CHROME HEARTS', 'ESSENTIAL FEAR GOD', 'BAPE', 'SP5DER', 'RALPH LAUREN', 'NIKE TECH', 'ASICS', 'BIRKENSTOCK'];
