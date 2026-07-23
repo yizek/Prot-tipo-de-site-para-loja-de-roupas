@@ -46,7 +46,7 @@ const products = [
       {name:'Preto / Prata', img:'images/asics3.jpg'},
       {name:'Azul / Prata', img:'images/asics4.jpg'},
       {name:'Branco / Vermelho', img:'images/asics5.jpg'},
-      {name:'Rosa / Dourado / Preto', img:'images/asics6.jpg'}
+      {name:'Rosa / Cinza / Preto', img:'images/asics6.jpg'}
     ]},
   {cat:'Tênis', brand:'BIRKENSTOCK', name:'Arizona', icon:'sneaker', price:799.90, old:899.90, stock:true, free:true, sizes:['36','37','38','39','40','41','42','43','44'],
     colors:[
@@ -70,11 +70,13 @@ const products = [
   },
   {cat:'Tênis', brand:'DIOR', name:'B30', icon:'sneaker', price:899.90, old:999.90, stock:true, free:true, sizes:['38','39','40','41','42','43','44'],
     colors:[
-      {name:'Branco', img:'images/b30_branco.jpg'},
+      {name:'Branco / Bege', img:'images/b30_brancobege.jpg'},
       {name:'Bege', img:'images/b30_bege.jpg'},
       {name:'Azul', img:'images/b30_azul.jpg'},
       {name:'Preto', img:'images/b30_preto.jpg'},
-      {name:'Preto / Bege', img:'images/b30_pretobege.jpg'}
+      {name:'Preto / Bege', img:'images/b30_pretobege.jpg'},
+      {name:'Preto / Branco', img:'images/b30_pretobranco.jpg'},
+      {name:'Branco', img:'images/b30_branco.jpg'}
   ]
   }
 ];
