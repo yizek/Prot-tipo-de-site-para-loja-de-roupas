@@ -41,16 +41,30 @@ const products = [
   {cat:'Corrente', brand:'CHROME HEARTS', name:'Cubana Prata 60cm', icon:'chain', price:169.90, old:199.90, stock:true, free:true, sizes:['50cm','60cm','70cm']},
   {cat:'Tênis', brand:'ASICS', name:'Gel Kayano 14', icon:'sneaker', price:899.90, old:999.90, stock:true, free:true, sizes:['38','39','40','41','42','43','44'],
     colors:[
-      {name:'Classic', img:'images/asics1.jpg'},
-      {name:'Cream / Sweet Pink', img:'images/asics2.jpg'},
-      {name:'Black / Pure Silver', img:'images/asics3.jpg'},
-      {name:'Blue / Silver', img:'images/asics4.jpg'},
-      {name:'White / Classic Red', img:'images/asics5.jpg'},
-      {name:'Pink Gol / Black', img:'images/asics6.jpg'}
+      {name:'Branco / Prata', img:'images/asics1.jpg'},
+      {name:'Creme / Rosa', img:'images/asics2.jpg'},
+      {name:'Preto / Prata', img:'images/asics3.jpg'},
+      {name:'Azul / Prata', img:'images/asics4.jpg'},
+      {name:'Branco / Vermelho', img:'images/asics5.jpg'},
+      {name:'Rosa / Dourado / Preto', img:'images/asics6.jpg'}
+    ]},
+  {cat:'Tênis', brand:'BIRKENSTOCK', name:'Arizona', icon:'sneaker', price:799.90, old:899.90, stock:true, free:true, sizes:['36','37','38','39','40','41','42','43','44'],
+    colors:[
+      {name:'Preto / Branco Print', img:'images/birken_arizona_print.png'},
+      {name:'Azul', img:'images/birken_arizona_blue.png'},
+      {name:'Vermelho', img:'images/birken_arizona_red.png'},
+      {name:'Pink', img:'images/birken_arizona_pink.png'},
+      {name:'Branco Cristal', img:'images/birken_arizona_white.png'},
+      {name:'Bege', img:'images/birken_arizona_tan.png'}
+    ]},
+  {cat:'Tênis', brand:'BIRKENSTOCK', name:'Boston', icon:'sneaker', price:849.90, old:null, stock:true, free:true, sizes:['36','37','38','39','40','41','42','43','44'],
+    colors:[
+      {name:'Cinza', img:'images/birken_boston_grey.png'},
+      {name:'Preto', img:'images/birken_boston_black.png'}
     ]}
 ];
 
-const brands = ['HELLSTAR', 'CHROME HEARTS', 'ESSENTIAL FEAR GOD', 'BAPE', 'SP5DER', 'RALPH LAUREN', 'NIKE TECH', 'ASICS'];
+const brands = ['HELLSTAR', 'CHROME HEARTS', 'ESSENTIAL FEAR GOD', 'BAPE', 'SP5DER', 'RALPH LAUREN', 'NIKE TECH', 'ASICS', 'BIRKENSTOCK'];
 
 const money = v => v.toLocaleString('pt-BR', {minimumFractionDigits:2, maximumFractionDigits:2});
 
