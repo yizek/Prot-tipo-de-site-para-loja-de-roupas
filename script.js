@@ -81,7 +81,7 @@ const products = [
   }
 ];
 
-const brands = ['HELLSTAR', 'CHROME HEARTS', 'ESSENTIAL FEAR GOD', 'BAPE', 'SP5DER', 'RALPH LAUREN', 'NIKE TECH', 'ASICS', 'BIRKENSTOCK'];
+const brands = ['HELLSTAR', 'CHROME HEARTS', 'ESSENTIAL FEAR GOD', 'BAPE', 'SP5DER', 'RALPH LAUREN', 'NIKE TECH', 'ASICS', 'BIRKENSTOCK', 'JORDAN', 'DIOR'];
 
 const money = v => v.toLocaleString('pt-BR', {minimumFractionDigits:2, maximumFractionDigits:2});
 
