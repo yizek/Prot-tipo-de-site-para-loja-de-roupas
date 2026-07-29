@@ -62,7 +62,7 @@ const products = [
       {name:'Cinza', img:'images/birken_boston_grey.png'},
       {name:'Preto', img:'images/birken_boston_black.png'}
     ]},
-  {cat:'Tênis', brand:'JORDAN', name:'JORDAN 5', icon:'sneaker', price:899.90, old:999.90, stock:true, free:true, sizes:['38','39','40','41','42','43','44'],
+  {cat:'Tênis', brand:'NIKE', name:'JORDAN 5', icon:'sneaker', price:899.90, old:999.90, stock:true, free:true, sizes:['38','39','40','41','42','43','44'],
     colors:[
       {name:'Preto', img:'images/jordan5_black.png'},
       {name:'Branco', img:'images/jordan5_white.png'},
@@ -77,11 +77,152 @@ const products = [
       {name:'Preto / Bege', img:'images/b30_pretobege.jpg'},
       {name:'Preto / Branco', img:'images/b30_pretobranco.jpg'},
       {name:'Branco', img:'images/b30_branco.jpg'}
+  
   ]
+  },
+  
+  {cat:'Tênis', brand:'NIKE', name:'Jordan 4', icon:'sneaker', price:899.90, old:999.90, stock:true, free:true, sizes:['38','39','40','41','42','43','44'],
+    colors:[
+      {name:'Preto / Amarelo', img:''},
+      {name:'Branco / Vinho', img:''},
+      {name:'Azul / Cinza', img:''},
+      {name:'Cinza', img:''},
+      {name:'Branco', img:''},
+      {name:'Branco / Verde', img:''},
+      {name:'Cinza / Branco', img:''},
+      {name:'Branco / Azul', img:''},
+      {name:'Preto', img:''},
+      {name:'Preto / Vermelho / Cinza', img:''},
+      {name:'Branco / Azul Escuro'},
+      {name:'Rosa / Branco'},
+      {name:'Branco Gold'},
+      {name:'Branco / Preto / Bege'},
+      {name:'Branco / Azul Flower '},
+      {name:'Vermelho / Preto'},
+        {name:'Preto / Branco'},
+        
+      ]
+  },
+  {cat:'Tênis', brand:'ON', name:'Cloudtilt', icon:'sneaker', price:899.90, old:999.90, stock:true, free:true, sizes:['38','39','40','41','42','43','44'],
+    colors:[
+      {name:'Preto / Branco', img:''},
+      {name:'Azul / Branco', img:''},
+      {name:'Rosa / Branco', img:''},
+      {name:'Bege / Branco', img:''},
+      {name:'Cinza / Preto / Branco', img:''},
+      {name:'Vinho / Branco', img:''},
+      {name:'Cinza / Branco', img:''},
+      {name:'Preto', img:''},
+      {name:'Dourado / Branco', img:'images/b30_branco.jpg'},
+      {name:'Vermelho / Branco', img:'images/b30_branco.jpg'}
+  
+  ]
+  },
+  {cat:'Tênis', brand:'MAISON MIHARA', name:'Maison Mihara', icon:'sneaker', price:899.90, old:999.90, stock:true, free:true, sizes:['38','39','40','41','42','43','44'],
+    colors:[
+      {name:'Vermelho', img:''},
+      {name:'Preto', img:''},
+      {name:'Branco / Preto', img:''},
+      {name:'HanK', img:''},
+      {name:'Peterson', img:''},
+      {name:'Blakey', img:''}
+  
+  ]
+  },
+
+  {cat:'Tênis', brand:'MIHARA x AMIRI', name:'Mihara x Amiri', icon:'sneaker', price:899.90, old:999.90, stock:true, free:true, sizes:['38','39','40','41','42','43','44'],
+    colors:[
+      {name:'Preto', img:''},
+      {name:'Jeans', img:''},
+      {name:'White', img:''},
+  ]
+  },
+  {cat:'Tênis', brand:'NIKE', name:'DN8', icon:'sneaker', price:899.90, old:999.90, stock:true, free:true, sizes:['38','39','40','41','42','43','44'],
+    colors:[
+      {name:'Cinza / Preto / Verde', img:''},
+      {name:'Preto', img:''},
+      {name:'Bege', img:''},
+      {name:'Preto / Branco', img:''},
+      {name:'Vermelho / Preto', img:''},
+      {name:'Verde Limão', img:''},
+      {name:'Rosa', img:''},
+      {name:'Laranja / Preto', img:''},
+      {name:'Branco', img:''},
+      {name:'Rosa / Roxo', img:''},
+      {name:'Azul / Preto', img:''},
+      {name:'Prata', img:''},
+      {name:'Lavanda', img:''},
+      {name:'Roxo / Preto', img:''},
+      {name:'Azul / Branco', img:''},
+  ]
+},
+
+{cat:'Tênis', brand:'NIKE', name:'Nocta 2', icon:'sneaker', price:899.90, old:999.90, stock:true, free:true, sizes:['38','39','40','41','42','43','44'],
+    colors:[
+      {name:'Branco', img:''},
+      {name:'Preto', img:''},
+      {name:'Laranja', img:''},
+      {name:'Amarelo', img:''},
+      {name:'Roxo', img:''}
+     
+    ]
+  },
+
+{cat:'Tênis', brand:'BAPE', name:'Bape STA', icon:'sneaker', price:899.90, old:999.90, stock:true, free:true, sizes:['38','39','40','41','42','43','44'],
+    colors:[
+      {name:'Preto / Branco', img:''},
+      {name:'Branco', img:''},
+      {name:'Ciza / Branco', img:''},
+      {name:'Preto / Cinza', img:''},
+      {name:'Azul / Branco', img:''},
+      {name:'Rosa', img:''},
+      {name:'Preto', img:''},
+      {name:'Cinza', img:''},
+      {name:'Preto / Azul', img:''},
+      {name:'Branco Shark', img:''},
+      {name:'Preto Shark', img:''},
+      {name:'Vermelho Shark', img:''},
+      {name:'Azul Shark', img:''},
+      {name:'Hello Kitty', img:''}
+     
+    ]
+  },
+
+{cat:'Tênis', brand:'NIKE', name:'Nike Mind 001', icon:'sneaker', price:899.90, old:999.90, stock:true, free:true, sizes:['38','39','40','41','42','43','44'],
+    colors:[
+      {name:'Branco', img:''},
+      {name:'Cinza', img:''},
+      {name:'Preto', img:''},
+      {name:'Laranja', img:''},
+      {name:'Verde', img:''},
+      {name:'Vinho', img:''},
+      {name:'Preto / Azul', img:''}
+     
+    ]
+  },
+
+  {cat:'Tênis', brand:'NIKE', name:'Nike Mind 001 Nocta', icon:'sneaker', price:899.90, old:999.90, stock:true, free:true, sizes:['38','39','40','41','42','43','44'],
+    colors:[
+      {name:'Preto', img:''},
+      {name:'Azul', img:''},
+      {name:'Rosa', img:''},
+      {name:'Cinza', img:''},
+      {name:'Branco', img:''}
+     
+    ]
+  },
+
+  {cat:'Tênis', brand:'BALENCIAGA', name:'Runner 7.0', icon:'acessorios', price:899.90, old:999.90, stock:true, free:true, sizes:['38','39','40','41','42','43','44'],
+    colors:[
+      
+    ]
   }
+  
+
+
 ];
 
-const brands = ['HELLSTAR', 'CHROME HEARTS', 'ESSENTIAL FEAR GOD', 'BAPE', 'SP5DER', 'RALPH LAUREN', 'NIKE TECH', 'ASICS', 'BIRKENSTOCK', 'JORDAN', 'DIOR'];
+const brands = ['HELLSTAR', 'CHROME HEARTS', 'ESSENTIAL FEAR GOD', 'BAPE', 'SP5DER', 'RALPH LAUREN', 'NIKE TECH', 'ASICS', 'BIRKENSTOCK', 'JORDAN', 'DIOR', 'NIKE', 'BALENCIAGA', 'Maison Mihara', 'AMIRI', 'On', 'Bape' , 'AMIRI' ,'LANVIN'];
 
 const money = v => v.toLocaleString('pt-BR', {minimumFractionDigits:2, maximumFractionDigits:2});
 
