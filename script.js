@@ -113,11 +113,28 @@ const products = [
       {name:'Vinho / Branco', img:''},
       {name:'Cinza / Branco', img:''},
       {name:'Preto', img:''},
-      {name:'Dourado / Branco', img:'images/b30_branco.jpg'},
-      {name:'Vermelho / Branco', img:'images/b30_branco.jpg'}
+      {name:'Dourado / Branco', img:''},
+      {name:'Vermelho / Branco', img:''}
   
   ]
   },
+
+{cat:'Tênis', brand:'LANVIN', name:'Lanvin Curb', icon:'sneaker', price:899.90, old:999.90, stock:true, free:true, sizes:['38','39','40','41','42','43','44'],
+    colors:[
+      {name:'Branco Multicor', img:''},
+      {name:'Preto Grafitte', img:''},
+      {name:'Rosa Grafitte', img:''},
+      {name:'Branco Grafitte', img:''},
+      {name:'Branco / Azul', img:''},
+      {name:'Bege', img:''},
+      {name:'Preto Multicor', img:''},
+      {name:'Preto / Branco', img:''},
+      {name:'Branco', img:''},
+      
+  
+    ]
+  },
+
   {cat:'Tênis', brand:'MAISON MIHARA', name:'Maison Mihara', icon:'sneaker', price:899.90, old:999.90, stock:true, free:true, sizes:['38','39','40','41','42','43','44'],
     colors:[
       {name:'Vermelho', img:''},
