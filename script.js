@@ -31,8 +31,96 @@ function sneakerImg(color, extraClass){
 }
 
 const products = [
-  {cat:'Camiseta', brand:'ESSENTIAL FEAR GOD', name:'Essentials Oversized', icon:'tshirt', price:189.90, old:null, stock:true, free:true, sizes:['P','M','G','GG']},
-  {cat:'Moletom', brand:'HELLSTAR', name:'State Heavyweight', icon:'hoodie', price:349.90, old:419.90, stock:true, free:true, sizes:['P','M','G','GG']},
+
+  {cat:'Camiseta', brand:'TRAPSTAR', name:'Trapstar Its a Secret' , icon:'tshirt', price:189.90, old:null, stock:true, free:true, sizes:['P','M','G','GG'],
+    colors: [
+      {name:'Cinza', img:'images/trap_secretcinza.jpg'},
+      {name:'Preto', img:'images/trap_secretpreta.jpg'},
+      {name:'Preto Bicolor', img:'images/trap_secretpretalaranja.jpg'},
+      {name:'Branco', img:'images/trap_secretbranca.jpg'},
+
+]},
+
+{cat:'Camiseta', brand:'SYNA WORLD', name:'Syna World' , icon:'tshirt', price:189.90, old:null, stock:true, free:true, sizes:['P','M','G','GG'],
+    colors: [
+      {name:'Cinza / Preto / Amarelo', img:'images/syna_cinzapretoamarelo.jpg'},
+      {name:'Bege / Marrom', img:'images/syna_begemarrom.jpg'},
+      {name:'Cinza / Branco / Amarelo', img:'images/syna_cinzabrancoamarelo.jpg'},
+      {name:'Preto / Cinza / Azul', img:'images/syna_pretocinzaazul.jpg'},
+
+]},
+
+{cat:'Conjunto Frio', brand:'SYNA WORLD', name:'Syna World Conjunto' , icon:'conjunto frio', price:189.90, old:null, stock:true, free:true, sizes:['P','M','G','GG'],
+    colors: [
+      {name:'Cinza', img:'images/conjuntosynafrio_cinza.jpg'},
+      {name:'Preto', img:'images/conjuntosynafrio_preto.jpg'},
+      {name:'Vermelho', img:'images/conjuntosynafrio_vermelho.jpg'},
+      {name:'Azul', img:'images/conjuntosynafrio_azul.jpg'},
+      
+
+]},
+  
+{cat:'Conjunto Calor', brand:'SYNA WORLD', name:'Syna World Conjunto' , icon:'conjunto calor', price:189.90, old:null, stock:true, free:true, sizes:['P','M','G','GG'],
+    colors: [
+      {name:'Cinza', img:'images/conjuntosynacalor_cinzarosa.jpg'},
+      {name:'Preto', img:'images/conjuntosynacalor_preto.jpg'},
+      {name:'Vermelho', img:'images/conjuntosynacalor_vermelho.jpg'},
+      
+
+]},
+
+{cat:'Bermuda', brand:'TRAPSTAR', name:'Trapstar Its a Secret' , icon:'shorts', price:189.90, old:null, stock:true, free:true, sizes:['P','M','G','GG'],
+    colors: [
+      {name:'Cinza', img:'images/trap_berma_secretcinza.jpg'},
+      {name:'Cinza Bicolor', img:'images/trap_berma_secretcinza2.jpg'},
+      {name:'Preto', img:'images/trap_berma_secretpreta.jpg'},
+      {name:'Preto Bicolor', img:'images/trap_berma_secretpretalaranja.jpg'},
+
+]},
+
+{cat:'Bermuda', brand:'SYNA WORLD', name:'Syna World' , icon:'shorts', price:189.90, old:null, stock:true, free:true, sizes:['P','M','G','GG'],
+    colors: [
+      {name:'Preto', img:'images/berma_syna_preto.jpg'},
+      {name:'Vermelho', img:'images/berma_syna_vermelha.jpg'},
+      {name:'Azul', img:'images/berma_syna_azul.jpg'},
+      {name:'Verde e Amarelo', img:'images/berma_syna_verdeamarelo.jpg'},
+
+]},
+  
+{cat:'Moletom', brand:'ESSENTIALS FEAR GOD', name:'ESSENTIALS' , icon:'hoodie', price:189.90, old:null, stock:true, free:true, sizes:['P','M','G','GG'],
+    colors: [
+      {name:'Branco', img:'images/essentials_hoodiebranco.jpg'},
+      {name:'Marrom', img:'images/essentials_hoodiemarrom.jpg'},
+      {name:'Preto', img:'images/essentials_hoodiepreto.jpg'},
+      
+
+]},
+
+
+{cat:'Manga Longa', brand:'CHROME HEARTS', name:'Chrome Hearts Long Sleeve', icon:'manga longa', price:849.90, old:null, stock:true, free:true, sizes:['P','M','G','GG'],
+    colors:[
+      {name:'Branco e Rosa', img:'images/chls_rosabranco.jpg'},
+      {name:'Preto Brilho', img:'images/chls_pretobrilho.jpg'},
+      {name:'Branco Multicor', img:'images/chls_brancocolorido.jpg'},
+      {name:'Preto Multicor', img:'images/chls_pretocolorido.jpg'},
+      {name:'Azul', img:'images/chls_azul.jpg'},
+      {name:'Rosa e Preto', img:'images/chls_rosapreto.jpg'},
+      {name:'Rosa', img:'images/chls_rosa.jpg'},
+      {name:'Verde', img:'images/chls_verdesex.jpg'},
+      {name:'Branco e Preto', img:'images/chls_brancopreto.jpg'},
+      {name:'Branco e Azul', img:'images/chls_brancoazul.jpg'},
+      {name:'Branco Multicor2', img:'images/chls_brancocoloridobig.jpg'},
+      {name:'Preto Multicor2', img:'images/chls_pretocoloridobig.jpg'},
+      {name:'Rosa', img:'images/chls_rosavermelho.jpg'},
+      {name:'Rosa VANITY', img:'images/chls_rosavanity.jpg'},
+      {name:'Branco', img:'images/chls_branco.jpg'},
+      {name:'Preto', img:'images/chls_preto.jpg'}
+
+
+
+    ]},
+
+    
   {cat:'Boné', brand:'BAPE', name:'Aba Reta Classic', icon:'cap', price:129.90, old:null, stock:true, free:false, sizes:['Único']},
   {cat:'Bermuda', brand:'SP5DER', name:'Cargo Tactel', icon:'shorts', price:199.90, old:null, stock:false, free:true, sizes:['P','M','G','GG']},
   {cat:'Calça', brand:'NIKE TECH', name:'Jogger Ripstop', icon:'pants', price:289.90, old:339.90, stock:true, free:true, sizes:['38','40','42','44']},
@@ -181,7 +269,7 @@ const products = [
       {name:'Laranja', img:''},
       {name:'Amarelo', img:''},
       {name:'Roxo', img:''}
-     
+      
     ]
   },
 
@@ -201,7 +289,7 @@ const products = [
       {name:'Vermelho Shark', img:''},
       {name:'Azul Shark', img:''},
       {name:'Hello Kitty', img:''}
-     
+      
     ]
   },
 
@@ -214,7 +302,7 @@ const products = [
       {name:'Verde', img:''},
       {name:'Vinho', img:''},
       {name:'Preto / Azul', img:''}
-     
+      
     ]
   },
 
@@ -225,7 +313,7 @@ const products = [
       {name:'Rosa', img:''},
       {name:'Cinza', img:''},
       {name:'Branco', img:''}
-     
+      
     ]
   },
 
@@ -244,10 +332,10 @@ const brands = ['HELLSTAR', 'CHROME HEARTS', 'ESSENTIAL FEAR GOD', 'BAPE', 'SP5D
 const money = v => v.toLocaleString('pt-BR', {minimumFractionDigits:2, maximumFractionDigits:2});
 
 function cardFrontIcon(p){
-  return p.icon === 'sneaker' ? sneakerImg(p.colors[0]) : icons[p.icon + '_front'];
+  return (p.icon === 'sneaker' || (p.colors && p.colors.length)) ? sneakerImg(p.colors[0]) : icons[p.icon + '_front'];
 }
 function cardBackIcon(p){
-  return p.icon === 'sneaker' ? '' : icons[p.icon + '_back'];
+  return (p.icon === 'sneaker' || (p.colors && p.colors.length)) ? '' : icons[p.icon + '_back'];
 }
 
 let activeCategory = 'Todos';
@@ -258,12 +346,15 @@ function matchesCategory(p, categoryFilter) {
   const catLower = p.cat.toLowerCase();
   const filterLower = categoryFilter.toLowerCase();
   if (filterLower === 'camisetas') return catLower === 'camiseta';
+  if (filterLower === 'manga longa') return catLower === 'manga longa';
   if (filterLower === 'moletom / jaqueta') return catLower === 'moletom' || catLower === 'corta-vento';
   if (filterLower === 'bermudas') return catLower === 'bermuda';
   if (filterLower === 'calças') return catLower === 'calça';
   if (filterLower === 'bonés') return catLower === 'boné';
   if (filterLower === 'óculos') return catLower === 'óculos';
   if (filterLower === 'correntes') return catLower === 'corrente';
+  if (filterLower === 'conjuntos calor') return catLower === 'conjunto calor';
+  if (filterLower === 'conjuntos frio') return catLower === 'conjunto frio';
   return catLower === filterLower;
 }
 
@@ -818,7 +909,7 @@ function renderCart() {
     return `
       <div class="cart-item">
         <div class="cart-item__media">
-          ${item.product.icon === 'sneaker' ? sneakerImg(item.product.colors.find(c => c.name === item.colorName) || item.product.colors[0]) : icons[item.product.icon + '_front']}
+          ${(item.product.icon === 'sneaker' || (item.product.colors && item.product.colors.length)) ? sneakerImg(item.product.colors.find(c => c.name === item.colorName) || item.product.colors[0]) : icons[item.product.icon + '_front']}
         </div>
         <div class="cart-item__info">
           <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
