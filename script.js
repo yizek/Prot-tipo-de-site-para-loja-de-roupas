@@ -32,6 +32,96 @@ function sneakerImg(color, extraClass){
 
 const products = [
 
+    {cat:'Calça', brand:'DENIM TEARS', name:'The Cotton Wreath' , icon:'pants', price:189.90, old:null, stock:true, free:true, sizes:['P','M','G','GG'],
+    colors: [
+      {name:'Preto e Branco', img:'images/denim_moletomcalca_pretobranco.jpg'},
+      {name:'Azul Bebe', img:'images/denim_moletomcalca_azulbebe.jpg'},
+      {name:'Preto', img:'images/denim_moletomcalca_preto.jpg'},
+      {name:'Cinza', img:'images/denim_moletomcalca_cinza.jpg'},
+      {name:'Azul', img:'images/denim_moletomcalca_azu.jpg'},
+      {name:'Rosa', img:'images/denim_moletomcalca_rosa.jpg'},
+      {name:'Vermelho', img:'images/denim_moletomcalca_vermelho.jpg'},
+      {name:'Verde', img:'images/denim_moletomcalca_verde.jpg'},
+      {name:'Cinza', img:'images/denim_moletomcalca_cinza.jpg'},
+
+]},
+
+  {cat:'Moletom', brand:'DENIM TEARS', name:'The Cotton Wreath' , icon:'hoodie', price:189.90, old:null, stock:true, free:true, sizes:['P','M','G','GG'],
+    colors: [
+      {name:'Preto e Branco', img:'images/denim_moletom_pretobranco.jpg'},
+      {name:'Azul Bebe', img:'images/denim_moletom_azulbebe.jpg'},
+      {name:'Preto', img:'images/denim_moletom_preto.jpg'},
+      {name:'Cinza', img:'images/denim_moletom_cinza.jpg'},
+      {name:'Azul', img:'images/denim_moletom_azul.jpg'},
+      {name:'Rosa', img:'images/denim_moletom_rosa.jpg'},
+      {name:'Vermelho', img:'images/denim_moletom_vermelho.jpg'},
+      {name:'Verde', img:'images/denim_moletom_verde.jpg'},
+      {name:'Cinza', img:'images/denim_moletom_cinza.jpg'},
+
+    ]},
+      
+
+
+
+
+
+  {cat:'Calça', brand:'CORTEIZ', name:'Corteiz Allstarz Cuffed' , icon:'pants', price:189.90, old:null, stock:true, free:true, sizes:['P','M','G','GG'],
+    colors: [
+      {name:'Creme', img:'images/corteiz_moletomcalca_branco.jpg'},
+      {name:'Azul Bebe', img:'images/corteiz_moletomcalca_azulbebe.jpg'},
+      
+
+]},
+
+  {cat:'Moletom', brand:'CORTEIZ', name:'Corteiz Allstarz Hoodie' , icon:'hoodie', price:189.90, old:null, stock:true, free:true, sizes:['P','M','G','GG'],
+    colors: [
+      {name:'Creme', img:'images/corteiz_moletom_branca.jpg'},
+      {name:'Azul Bebe', img:'images/corteiz_moletom_azulbebe.jpg'},
+      
+
+]},
+
+  {cat:'Camiseta', brand:'CORTEIZ', name:'Corteiz World In Debt' , icon:'tshirt', price:189.90, old:null, stock:true, free:true, sizes:['P','M','G','GG'],
+    colors: [
+      {name:'Preto', img:'images/corteiz_pretaclassica.jpg'},
+      {name:'Branca', img:'images/corteiz_brancaclassica.jpg'},
+      
+
+]},
+
+{cat:'Camiseta', brand:'CORTEIZ', name:'Corteiz Alcatraz Tee' , icon:'tshirt', price:189.90, old:null, stock:true, free:true, sizes:['P','M','G','GG'],
+    colors: [
+      {name:'Branco', img:'images/corteiz_classicabranca.jpg'},
+      {name:'Preto', img:'images/corteiz_classicapreta.jpg'},
+      
+
+]},
+
+  {cat:'Camiseta', brand:'CORTEIZ', name:'Corteiz BRASIL Allstarz Tee' , icon:'tshirt', price:189.90, old:null, stock:true, free:true, sizes:['P','M','G','GG'],
+    colors: [
+      {name:'Preto', img:'images/corteiz_brasilpreta.jpg'},
+      {name:'Branco', img:'images/corteiz_brasilbranca.jpg'},
+      
+
+]},
+
+  {cat:'Camiseta', brand:'CORTEIZ', name:'Corteiz Allstarz Tee' , icon:'tshirt', price:189.90, old:null, stock:true, free:true, sizes:['P','M','G','GG'],
+    colors: [
+      {name:'Branco', img:'images/corteiz_branca.jpg'},
+      {name:'Preto', img:'images/corteiz_preta.jpg'},
+      
+
+]},
+
+{cat:'Camiseta', brand:'CORTEIZ', name:'Corteiz Chrome Allstarz' , icon:'tshirt', price:189.90, old:null, stock:true, free:true, sizes:['P','M','G','GG'],
+    colors: [
+      {name:'Preto', img:'images/corteiz_pretaprata.jpg'},
+      {name:'Branco', img:'images/corteiz_brancaprata.jpg'},
+      
+
+]},
+
+
   {cat:'Camiseta', brand:'TRAPSTAR', name:'Trapstar Its a Secret' , icon:'tshirt', price:189.90, old:null, stock:true, free:true, sizes:['P','M','G','GG'],
     colors: [
       {name:'Cinza', img:'images/trap_secretcinza.jpg'},
